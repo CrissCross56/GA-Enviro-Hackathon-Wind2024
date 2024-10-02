@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as openWeatherApi from '../../utils/openWeatherApi';
+import Map from '../../components/Map/Map'
 
 export default function OpenWeatherPage() {
     const [openWeatherData, setOpenWeatherData] = useState(null)
@@ -31,11 +32,9 @@ export default function OpenWeatherPage() {
                 pm10: (openWeatherDataRes.list[0].components.pm10),
                 nh3: (openWeatherDataRes.list[0].components.nh3),
                 dt: (openWeatherDataRes.list[0].dt),
-
             }
             console.log('data', data)
             setResData(data)
-            
             // setError('')
         } catch (err) {
             console.log(err)
@@ -46,6 +45,8 @@ export default function OpenWeatherPage() {
     return (
         <>
             <h1>HELLO</h1>
+
+            <Map />
 
             <button onClick={() => fetchOpenWeatherApi()}> CLICK ME: Search LA coordinates</button>
 
