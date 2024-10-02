@@ -35,22 +35,11 @@ export default function OpenWeatherPage() {
             }
             console.log('data', data)
             setResData(data)
-
-            setData(data)
-
-
             
             // setError('')
         } catch (err) {
             console.log(err)
             setError(err.message);
-        }
-
-        function setData(data) {
-            if (data) {
-                localStorage.setItem('data', 
-                    JSON.stringify(data));
-            }
         }
     }
 
