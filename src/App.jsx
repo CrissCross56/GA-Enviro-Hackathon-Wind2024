@@ -3,6 +3,7 @@ import OpenWeatherPage from './pages/OpenWeatherPage/OpenWeatherPage'
 import "./App.css";
 import GeoLocationTest from "./components/GeoLocationTest";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import AQIComponent from "./components/AQIComponent/AQIComponent";
 
 function App() {
   return (
@@ -12,8 +13,8 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/openweather" element={<OpenWeatherPage />} />
     </Routes>
-    <GeoLocationTest/>
-
+    {/* <GeoLocationTest/> */}
+    <AQIComponent />
     </div>
   );
 }
