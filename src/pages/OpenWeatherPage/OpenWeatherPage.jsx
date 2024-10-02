@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as openWeatherApi from '../../utils/openWeatherApi';
 import Map from '../../components/Map/Map'
+import Pollutants from '../../components/Pollutants/Pollutants'
 
 export default function OpenWeatherPage() {
     const [openWeatherData, setOpenWeatherData] = useState(null)
@@ -44,9 +45,10 @@ export default function OpenWeatherPage() {
 
     return (
         <>
-            <h1>HELLO</h1>
+            {/* <h1>HELLO</h1> */}
 
             <Map />
+            <Pollutants />
 
             <button onClick={() => fetchOpenWeatherApi()}> CLICK ME: Search LA coordinates</button>
 
