@@ -27,7 +27,7 @@ export default function Map({ setCoordinates }) {
 
        //Can use "move" but that tracks all the movement on the map. "MoveEnd " tracks map movement on the end of where the map is set
         mapRef.current.on('moveend', () => {
-            // get the current center coordinates and zoom level from the map
+            // This gets the current center coordinates and zoom level from the map
             const mapCenter = mapRef.current.getCenter()
             const mapZoom = mapRef.current.getZoom()
             // update state

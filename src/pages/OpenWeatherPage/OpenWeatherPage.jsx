@@ -14,13 +14,13 @@ export default function OpenWeatherPage() {
         }    
     }, [coordinates]);
 
-
     async function fetchOpenWeatherApi() {
         const openWeatherDataValue = {
             lat: "34.05",
             lon: "-118.25"
         }
         try {
+            console.log("COORDIANTES",coordinates)
             const openWeatherDataReq = await openWeatherApi.fetchOpenWeatherData(coordinates)
             try { 
                 if (!openWeatherDataReq.ok) throw new Error('Error fetching data'); }
