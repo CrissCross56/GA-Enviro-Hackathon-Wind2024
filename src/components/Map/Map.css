@@ -63,13 +63,12 @@
 
 
 .mapboxgl-ctrl-attrib-button {
-
     border: none;
     padding: 5px !important;
-    /* outline: 1px solid white !important; */
 }
 
 .mapboxgl-ctrl-attrib-button:focus {
-    outline: none !important;   /* White outline */
-    box-shadow: none;             /* Optional: Add a white glow for better visibility */
+    outline: none !important;   /* This fixed the shadow glow from info trademark*/
+    box-shadow: none;           
 }
+
