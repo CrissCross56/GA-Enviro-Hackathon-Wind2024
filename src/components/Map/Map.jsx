@@ -25,7 +25,8 @@ export default function Map({ setCoordinates }) {
             zoom: zoom
         });
 
-        mapRef.current.on('move', () => {
+       //Can use "move" but that tracks all the movement on the map. "MoveEnd " tracks map movement on the end of where the map is set
+        mapRef.current.on('moveend', () => {
             // get the current center coordinates and zoom level from the map
             const mapCenter = mapRef.current.getCenter()
             const mapZoom = mapRef.current.getZoom()
@@ -51,12 +52,12 @@ export default function Map({ setCoordinates }) {
     return (
 
         <>
-            <div className="sidebar">
+            {/* <div className="sidebar">
                 Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
-            </div>
-            <button className='reset-button' onClick={handleButtonClick}>
+            </div> */}
+            {/* <button className='reset-button' onClick={handleButtonClick}>
                 Reset
-            </button>
+            </button> */}
             <div id='map-container' ref={mapContainerRef} >
             </div>
         </>
