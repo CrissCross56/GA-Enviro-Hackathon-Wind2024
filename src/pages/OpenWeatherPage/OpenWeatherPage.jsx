@@ -25,7 +25,7 @@ export default function OpenWeatherPage() {
             try { 
                 if (!openWeatherDataReq.ok) throw new Error('Error fetching data'); }
             catch (error) { console.log(error) }
-            console.log("openWeatherDataReq", openWeatherDataReq)
+            // console.log("openWeatherDataReq", openWeatherDataReq)
             const openWeatherDataRes = await openWeatherDataReq;
             setOpenWeatherData(openWeatherDataRes)
             const data ={

@@ -39,9 +39,26 @@
     cursor: pointer;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .map-container {
-      width: 100%; 
-      margin: 10px auto;
+        width: 100%;
+        margin: 10px auto;
     }
-  }
+} */
+
+.mapboxgl-ctrl-compass {
+    display: none !important;
+}
+
+.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-zoom-out {
+    /* background-color: #ffffff; */
+    border-radius: 0;
+    border: none;
+}
+
+.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-zoom-out {
+    outline: none !important;        
+}
+

@@ -25,6 +25,8 @@ export default function Map({ setCoordinates }) {
             zoom: zoom
         });
 
+        mapRef.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+
        //Can use "move" but that tracks all the movement on the map. "MoveEnd " tracks map movement on the end of where the map is set
         mapRef.current.on('moveend', () => {
             // This gets the current center coordinates and zoom level from the map
@@ -33,7 +35,10 @@ export default function Map({ setCoordinates }) {
             // update state
             setCenter([mapCenter.lng, mapCenter.lat])
             console.log("mapCenter.lng, mapCenter.lat", mapCenter.lng, mapCenter.lat)
-            setCoordinates({ lon: mapCenter.lng, lat: mapCenter.lat }) // This updates the coordinates in the Open weather page
+            setCoordinates({ 
+                lon: parseFloat(mapCenter.lng.toFixed(2)), 
+                lat: parseFloat(mapCenter.lat.toFixed(2)) 
+            }) // This updates the coordinates in the Open weather page
             setZoom(mapZoom)
         })
 
@@ -42,22 +47,16 @@ export default function Map({ setCoordinates }) {
         }
     }, [])
 
-    const handleButtonClick = () => {
-        mapRef.current.flyTo({
-            center: INITIAL_CENTER,
-            zoom: INITIAL_ZOOM
-        })
-    }
+    // const handleButtonClick = () => {
+    //     mapRef.current.flyTo({
+    //         center: INITIAL_CENTER,
+    //         zoom: INITIAL_ZOOM
+    //     })
+    // }
 
     return (
 
         <>
-            {/* <div className="sidebar">
-                Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
-            </div> */}
-            {/* <button className='reset-button' onClick={handleButtonClick}>
-                Reset
-            </button> */}
             <div id='map-container' ref={mapContainerRef} >
             </div>
         </>
