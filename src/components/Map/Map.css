@@ -7,8 +7,9 @@
 }
 
 #map-container {
-    height: 75%;
-    width: 75%;
+    height: 500px;
+    width: 910px;
+    
     background-color: lightgrey;
 }
 

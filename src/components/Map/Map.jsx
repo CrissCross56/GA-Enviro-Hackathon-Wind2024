@@ -4,13 +4,12 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import "./Map.css";
 
 const INITIAL_CENTER = [
-    -74.0242,
-    40.6941
+    -118.25,
+    34.05
 ]
-const INITIAL_ZOOM = 10.12
+const INITIAL_ZOOM = 8.5
 
-export default function Map() {
-
+export default function Map({ setCoordinates }) {
     const mapRef = useRef()
     const mapContainerRef = useRef()
     const [center, setCenter] = useState(INITIAL_CENTER)
@@ -30,9 +29,10 @@ export default function Map() {
             // get the current center coordinates and zoom level from the map
             const mapCenter = mapRef.current.getCenter()
             const mapZoom = mapRef.current.getZoom()
-
             // update state
             setCenter([mapCenter.lng, mapCenter.lat])
+            console.log("mapCenter.lng, mapCenter.lat", mapCenter.lng, mapCenter.lat)
+            setCoordinates({ lon: mapCenter.lng, lat: mapCenter.lat }) // This updates the coordinates in the Open weather page
             setZoom(mapZoom)
         })
 
@@ -48,7 +48,6 @@ export default function Map() {
         })
     }
 
-
     return (
 
         <>
@@ -58,7 +57,7 @@ export default function Map() {
             <button className='reset-button' onClick={handleButtonClick}>
                 Reset
             </button>
-            <div id='map-container' ref={mapContainerRef}>
+            <div id='map-container' ref={mapContainerRef} >
             </div>
         </>
     )

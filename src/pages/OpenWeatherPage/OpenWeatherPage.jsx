@@ -7,14 +7,22 @@ export default function OpenWeatherPage() {
     const [openWeatherData, setOpenWeatherData] = useState(null)
     const [resData, setResData] = useState(null)
     const [error, setError] = useState('')
+    const [coordinates, setCoordinates] = useState({ lon: -118.25, lat: 34.05 });
+
+    useEffect(() => {
+        if (coordinates.lon && coordinates.lat) {
+            fetchOpenWeatherApi();
+        }
+    }, [coordinates]);
 
     async function fetchOpenWeatherApi() {
         const openWeatherDataValue = {
+            lon: "-118.25",
             lat: "34.05",
-            lon: "-118.25"
         }
+
         try {
-            const openWeatherDataReq = await openWeatherApi.fetchOpenWeatherData(openWeatherDataValue)
+            const openWeatherDataReq = await openWeatherApi.fetchOpenWeatherData(coordinates)
             try { if (!openWeatherDataReq.ok) throw new Error('Error fetching data'); }
             catch (error) { console.log(error) }
             console.log("openWeatherDataReq", openWeatherDataReq)
@@ -45,15 +53,11 @@ export default function OpenWeatherPage() {
 
     return (
         <>
-            {/* <h1>HELLO</h1> */}
-
-            <Map />
-            <Pollutants />
-
-            <button onClick={() => fetchOpenWeatherApi()}> CLICK ME: Search LA coordinates</button>
+            <Map setCoordinates={setCoordinates} />
+            {/* <Pollutants /> */}
+            {/* <button onClick={() => fetchOpenWeatherApi()}> CLICK ME: Search LA coordinates</button> */}
 
             <div >
-
                 {(openWeatherData) ? (JSON.stringify(openWeatherData))
                     : "Need to search something!"}
             </div>
