@@ -22,22 +22,27 @@ export default function Map({ setCoordinates }) {
         mapRef.current = new mapboxgl.Map({
             container: mapContainerRef.current,
             center: center,
-            zoom: zoom
-        });
+            zoom: zoom,
+            attributionControl: false,
 
+        })
+        const attributionControl = new mapboxgl.AttributionControl({
+            compact: true
+        })
+        mapRef.current.addControl(attributionControl, 'top-right')
         mapRef.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
-       //Can use "move" but that tracks all the movement on the map. "MoveEnd " tracks map movement on the end of where the map is set
+        //Can use "move" but that tracks all the movement on the map. "MoveEnd " tracks map movement on the end of where the map is set
         mapRef.current.on('moveend', () => {
             // This gets the current center coordinates and zoom level from the map
             const mapCenter = mapRef.current.getCenter()
             const mapZoom = mapRef.current.getZoom()
             // update state
             setCenter([mapCenter.lng, mapCenter.lat])
-            console.log("mapCenter.lng, mapCenter.lat", mapCenter.lng, mapCenter.lat)
-            setCoordinates({ 
-                lon: parseFloat(mapCenter.lng.toFixed(2)), 
-                lat: parseFloat(mapCenter.lat.toFixed(2)) 
+            // console.log("mapCenter.lng, mapCenter.lat", mapCenter.lng, mapCenter.lat)
+            setCoordinates({
+                lon: parseFloat(mapCenter.lng.toFixed(2)),
+                lat: parseFloat(mapCenter.lat.toFixed(2))
             }) // This updates the coordinates in the Open weather page
             setZoom(mapZoom)
         })

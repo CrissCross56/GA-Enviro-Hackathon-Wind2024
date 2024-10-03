@@ -28,16 +28,15 @@
     border-radius: 4px;
 }
 
-.reset-button {
+/* .reset-button {
     position: absolute;
     top: 32px;
     z-index: 1;
     left: 887px;
-    /* right: 50px; */
     padding: 4px 10px;
     border-radius: 10px;
     cursor: pointer;
-}
+} */
 
 /* @media (max-width: 600px) {
     .map-container {
@@ -59,6 +58,18 @@
 
 .mapboxgl-ctrl-zoom-in,
 .mapboxgl-ctrl-zoom-out {
-    outline: none !important;        
+    outline: none !important;
 }
 
+
+.mapboxgl-ctrl-attrib-button {
+
+    border: none;
+    padding: 5px !important;
+    /* outline: 1px solid white !important; */
+}
+
+.mapboxgl-ctrl-attrib-button:focus {
+    outline: none !important;   /* White outline */
+    box-shadow: none;             /* Optional: Add a white glow for better visibility */
+}
