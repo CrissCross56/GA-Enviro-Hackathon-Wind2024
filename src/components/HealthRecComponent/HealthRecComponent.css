@@ -1,0 +1,71 @@
+.health-rec-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  .health-rec-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .health-rec-card {
+    background-color: transparent; /* Make the container fully transparent */
+    border-radius: 12px;
+    padding: 15px;
+  }
+  
+  .health-rec-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #b5d8ba; /* Default safe background color */
+    color: black;
+    box-shadow: none; /* Ensure no shadow */
+    border: none; /* Ensure no border */
+  }
+  
+  .health-rec-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .health-rec-icon {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+  
+  .health-rec-text {
+    font-size: 16px;
+  }
+  
+  /* Background colors for caution and hazard levels */
+  .caution {
+    background-color: #fffa66; /* Light yellow */
+  }
+  
+  .hazard {
+    background-color: #ff6666; /* Light red */
+  }
+  
+  .safe {
+    background-color: #b5d8ba; /* Light green */
+  }
+  
+  @media (min-width: 960px) {
+    .health-rec-container {
+      max-width: 500px;
+    }
+  }
