@@ -38,8 +38,11 @@ export default function Map({ setCoordinates, resData }) {
             mapRef.current.addSource('raster-tiles', {
                 type: 'raster',
                 tiles: [
-                    `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
+                    `https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
                 ],
+                // tiles: [
+                //     `https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
+                // ],
                 tileSize: 256,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, OpenWeather',
             });
@@ -76,7 +79,6 @@ export default function Map({ setCoordinates, resData }) {
 
 
     return (
-
         <>
             <div id='map-container' ref={mapContainerRef} >
             </div>
