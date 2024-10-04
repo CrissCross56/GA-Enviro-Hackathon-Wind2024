@@ -1,27 +1,31 @@
 import React from 'react';
-import './HealthRecComponent.css'; // Import your CSS for styling
+import './HealthRecComponent.css';
 
-const HealthRecComponent = () => {
-  // Replace with your actual AQI data
-  const aqi = 330;
+const HealthRecComponent = ({ aqiData }) => {
+  // Show a loading message if AQI data hasn't arrived yet
+  if (!aqiData) {
+    return <div>Loading health recommendations...</div>;
+  }
 
-  // Define different scenarios based on AQI levels
+  const aqi = aqiData.aqi;
+
+  // Define recommendations based on AQI levels (1-5 scale)
   let recommendations = [];
   let recommendationClass = '';
 
-  if (aqi <= 50) {
+  if (aqi === 1) {
     recommendations = [
       { icon: '/icons/enjoyOutdoorActivities.svg', text: 'Enjoy Outdoor Activities' },
       { icon: '/icons/enjoyFreshAir.svg', text: 'Enjoy the Fresh Air' },
     ];
     recommendationClass = 'safe';
-  } else if (aqi > 50 && aqi <= 100) {
+  } else if (aqi === 2) {
     recommendations = [
       { icon: '/icons/enjoyOutdoorActivities.svg', text: 'Enjoy Outdoor Activities' },
       { icon: '/icons/enjoyFreshAir.svg', text: 'Enjoy the Fresh Air' },
     ];
     recommendationClass = 'moderate';
-  } else if (aqi > 100 && aqi <= 150) {
+  } else if (aqi === 3) {
     recommendations = [
       {
         icon: '/icons/avoidOutdoorActivites.svg',
@@ -33,19 +37,13 @@ const HealthRecComponent = () => {
       },
     ];
     recommendationClass = 'unhealthy-sensitive';
-  } else if (aqi > 150 && aqi <= 200) {
+  } else if (aqi === 4) {
     recommendations = [
       { icon: '/icons/avoidOutdoorActivites.svg', text: 'Avoid outdoor activity' },
       { icon: '/icons/medical_mask.svg', text: 'Wear a mask outdoors' },
     ];
     recommendationClass = 'unhealthy';
-  } else if (aqi > 200 && aqi <= 300) {
-    recommendations = [
-      { icon: '/icons/avoidOutdoorActivites.svg', text: 'Avoid outdoor activity' },
-      { icon: '/icons/medical_mask.svg', text: 'Wear a mask outdoors' },
-    ];
-    recommendationClass = 'very-unhealthy';
-  } else if (aqi > 300) {
+  } else if (aqi === 5) {
     recommendations = [
       { icon: '/icons/avoidOutdoors.svg', text: 'Avoid outdoors' },
     ];
