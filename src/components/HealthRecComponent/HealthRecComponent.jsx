@@ -1,57 +1,67 @@
 import React from 'react';
 import './HealthRecComponent.css';
 
-const HealthRecComponent = () => {
-  // Hardcoded AQI value (replace with actual data)
-  const aqi = 90;
+const HealthRecComponent = ({ aqiData }) => {
+  // Show a loading message if AQI data hasn't arrived yet
+  if (!aqiData) {
+    return <div>Loading health recommendations...</div>;
+  }
 
-  // Define different scenarios based on AQI levels
+  const aqi = aqiData.aqi;
+
+  // Define recommendations based on AQI levels (1-5 scale)
   let recommendations = [];
   let recommendationClass = '';
 
-  if (aqi <= 50) {
+  if (aqi === 1) {
     recommendations = [
-      { icon: '🌳', text: 'You may go outdoors' },
-      { icon: '🚴‍♂️', text: 'Outdoor activities are safe' }
+      { icon: '/icons/enjoyOutdoorActivities.svg', text: 'Enjoy Outdoor Activities' },
+      { icon: '/icons/enjoyFreshAir.svg', text: 'Enjoy the Fresh Air' },
     ];
     recommendationClass = 'safe';
-  } else if (aqi > 50 && aqi <= 100) {
+  } else if (aqi === 2) {
     recommendations = [
-      { icon: '🏃‍♀️', text: 'Reduce prolonged outdoor exertion' },
-      { icon: '🚴‍♂️', text: 'Limit intense outdoor activities' }
+      { icon: '/icons/enjoyOutdoorActivities.svg', text: 'Enjoy Outdoor Activities' },
+      { icon: '/icons/enjoyFreshAir.svg', text: 'Enjoy the Fresh Air' },
     ];
-    recommendationClass = 'caution';
-  } else if (aqi > 100 && aqi <= 150) {
+    recommendationClass = 'moderate';
+  } else if (aqi === 3) {
     recommendations = [
-      { icon: '😷', text: 'Consider wearing a mask outdoors' },
-      { icon: '🏃‍♀️', text: 'Avoid prolonged outdoor exertion' }
+      {
+        icon: '/icons/avoidOutdoorActivites.svg',
+        text: 'Sensitive groups should reduce outdoor activity',
+      },
+      {
+        icon: '/icons/medical_mask.svg',
+        text: 'Sensitive groups should wear a mask outdoors',
+      },
     ];
-    recommendationClass = 'caution';
-  } else if (aqi > 150 && aqi <= 200) {
+    recommendationClass = 'unhealthy-sensitive';
+  } else if (aqi === 4) {
     recommendations = [
-      { icon: '😷', text: 'Wear a mask outdoors' },
-      { icon: '🏠', text: 'Stay indoors if possible' }
+      { icon: '/icons/avoidOutdoorActivites.svg', text: 'Avoid outdoor activity' },
+      { icon: '/icons/medical_mask.svg', text: 'Wear a mask outdoors' },
     ];
-    recommendationClass = 'hazard';
-  } else {
+    recommendationClass = 'unhealthy';
+  } else if (aqi === 5) {
     recommendations = [
-      { icon: '🚫', text: 'Avoid going outdoors' },
-      { icon: '🏠', text: 'Stay indoors and close windows' }
+      { icon: '/icons/avoidOutdoors.svg', text: 'Avoid outdoors' },
     ];
-    recommendationClass = 'hazard';
+    recommendationClass = 'dangerous';
   }
 
   return (
-    <div className="health-rec-container">
-      <h2 className="health-rec-title">Health Recommendations</h2>
-      <div className="health-rec-card">
+    <div className="health-rec-card">
+      <h1 className="health-rec-title">Health Recommendations</h1>
+      <div className={`health-rec-block ${recommendationClass}`}>
         {recommendations.map((rec, index) => (
-          <div key={index} className={`health-rec-item ${recommendationClass}`}>
-            <div className="health-rec-icon">
-              <span role="img" aria-label={rec.text}>{rec.icon}</span>
+          <React.Fragment key={index}>
+            <div className="health-rec-item">
+              <img src={rec.icon} alt="icon" className="health-rec-icon" />
+              <p className="health-rec-text">{rec.text}</p>
             </div>
-            <div className="health-rec-text">{rec.text}</div>
-          </div>
+            {index < recommendations.length - 1 && <hr className="health-rec-separator" />}
+          </React.Fragment>
         ))}
       </div>
     </div>

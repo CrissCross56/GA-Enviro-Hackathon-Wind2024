@@ -1,45 +1,54 @@
-require("dotenv").config();
+// server.js
+
+require("dotenv").config(); // Load environment variables at the very top
 const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const favicon = require("serve-favicon");
 
-require('dotenv').config();
-require("./config/database");
-
-// Require controllers here
+require("./config/database"); // Connect to the database
 
 const app = express();
 
-// add in when the app is ready to be deployed
-// app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+// Middleware setup
 app.use(logger("dev"));
 app.use(express.json());
 
-
-// Configure the auth middleware
-// This decodes the jwt token, and assigns
-// the user information to req.user
+// Configure the authentication middleware
+// This decodes the JWT token and assigns the user information to req.user
 app.use(require("./config/auth"));
-// api routes must be before the "catch all" route
+
+// API routes must be defined before the "catch all" route
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/openweather", require("./routes/api/openweather"));
 
-// "catch all" route
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// Determine the environment
+const isProduction = process.env.NODE_ENV === 'production';
 
+if (isProduction) {
+  // In production, serve static files from 'dist'
+  app.use(express.static(path.join(__dirname, 'dist')));
 
-const port = process.env.PORT || 3001;
+  // "Catch All" route to serve 'dist/index.html'
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+} else {
+  // In development, serve static files from 'public'
+  app.use(express.static(path.join(__dirname, 'public')));
 
+  // "Catch All" route to serve 'public/index.html'
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
+}
 
+// Unified port configuration
+const PORT = process.env.PORT || 8000;
 
-
-const { PORT = 8000 } = process.env;
 app.listen(PORT, () => {
   console.log();
-  console.log(`  App running in port ${PORT}`);
+  console.log(`  App running on port ${PORT}`);
   console.log();
-  console.log(`  > Local: \x1b[36mhttp://localhost:\x1b[1m${PORT}/\x1b[0m`);
+  console.log(`  > Local: http://localhost:${PORT}/`);
 });

@@ -1,92 +1,116 @@
 .aqi-card-updated {
-    background-color: #fff;
-    padding: 20px;
-    padding-top: 50px; /* Added padding to move the entire content down */
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 375px; /* Increased width by 25% */
-    margin: auto;
-    text-align: center;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .aqi-title {
-    font-size: 22px; /* Set a size for the title */
-    font-weight: 700; /* Make the title bold */
-    margin-bottom: 20px; /* Add some space below the title */
-    text-align: left; /* Align the title to the left */
-    margin-left: 10px; /* Offset the title slightly to the left */
-  }
-  
-  .aqi-text-updated {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%) translateY(50px);
-    text-align: center;
-  }
-  
-  .aqi-number {
-    font-size: 48px;
-    font-weight: 700;
-    margin: 0;
-    color: black;
-  }
-  
-  .aqi-status {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0;
-    color: black;
-    padding-bottom: 15px;
-  }
-  
-  .aqi-description {
-    margin-top: 60px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #666;
-  }
-  
-  .aqi-button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .aqi-alert-button-updated {
-    background-color: #4e63e7;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 30px;
-    margin-top: 40px;
-    margin-bottom: -10px;
-    cursor: pointer;
-    width: 80%;
-    font-size: 14px;
-    font-weight: 700;
-  }
-  
-  .aqi-learn-button-updated {
-    background-color: transparent;
-    color: #4e63e7;
-    border: 2px solid #4e63e7;
-    padding: 15px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    width: 80%;
-    margin-top: 1px;
-    font-size: 14px;
-    font-weight: 700;
-  }
-  
-  p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #666;
-    margin: 0;
-  }
+  background-color: #fff;
+  padding: 20px;
+  padding-top: 50px; /* Added padding to move the entire content down */
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 375px; /* Increased width by 25% */
+  margin: auto;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.aqi-title {
+  font-size: 22px; /* Set a size for the title */
+  font-weight: 700; /* Make the title bold */
+  margin-bottom: 20px; /* Add some space below the title */
+  text-align: left; /* Align the title to the left */
+  margin-left: 10px; /* Offset the title slightly to the left */
+}
+
+.aqi-text-updated {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(50px);
+  text-align: center;
+}
+
+.aqi-number {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  color: black;
+}
+
+.aqi-status {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: black;
+  padding-bottom: 15px;
+}
+
+.aqi-description {
+  margin-top: 60px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.aqi-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aqi-alert-button-updated {
+  background-color: #4e63e7;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 30px;
+  margin-top: 40px;
+  margin-bottom: -10px;
+  cursor: pointer;
+  width: 80%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.aqi-learn-button-updated {
+  background-color: transparent;
+  color: #4e63e7;
+  border: 2px solid #4e63e7;
+  padding: 15px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 80%;
+  margin-top: 1px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+}
+
+/* Additional styling for the error message */
+.aqi-error-message {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 375px;
+  margin: auto;
+  text-align: center;
+}
+
+.aqi-error-message h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: red;
+}
+
+.aqi-error-message p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}

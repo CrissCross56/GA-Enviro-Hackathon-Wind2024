@@ -1,71 +1,95 @@
-.health-rec-container {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 400px;
-    margin: 20px auto;
-  }
-  
-  .health-rec-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: left;
-  }
-  
-  .health-rec-card {
-    background-color: transparent; /* Make the container fully transparent */
-    border-radius: 12px;
-    padding: 15px;
-  }
-  
-  .health-rec-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    background-color: #b5d8ba; /* Default safe background color */
-    color: black;
-    box-shadow: none; /* Ensure no shadow */
-    border: none; /* Ensure no border */
-  }
-  
-  .health-rec-item:last-child {
-    margin-bottom: 0;
-  }
-  
-  .health-rec-icon {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
-  }
-  
-  .health-rec-text {
-    font-size: 16px;
-  }
-  
-  /* Background colors for caution and hazard levels */
-  .caution {
-    background-color: #fffa66; /* Light yellow */
-  }
-  
-  .hazard {
-    background-color: #ff6666; /* Light red */
-  }
-  
-  .safe {
-    background-color: #b5d8ba; /* Light green */
-  }
-  
-  @media (min-width: 960px) {
-    .health-rec-container {
-      max-width: 500px;
-    }
-  }
+/* HealthRecComponent.css */
+
+/* Card styling */
+.health-rec-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Size-12, 12px);
+  padding: 16px var(--Size-12, 12px);
+  background: var(--Main---Elements, #FFF);
+  border-radius: 16px;
+  /* Desktop Shadow */
+  box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0),
+              0px 16px 71px 0px rgba(53, 54, 66, 0.01),
+              0px 80px 60px 0px rgba(53, 54, 66, 0.05),
+              0px 38px 45px 0px rgba(53, 54, 66, 0.09),
+              0px 8px 25px 0px rgba(53, 54, 66, 0.1);
+  max-width: 375px; /* Same width as AQIComponent */
+  margin: auto;
+  height: auto;
+}
+
+/* Title styling */
+.health-rec-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+/* Inner block with colored background */
+.health-rec-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Remove gap to control spacing manually */
+  padding: 0;
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* To ensure the separator spans edge to edge */
+}
+
+/* Recommendation items */
+.health-rec-item {
+  display: flex;
+  align-items: center;
+  color: black;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.health-rec-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.health-rec-text {
+  font-size: 16px;
+}
+
+/* Separator line */
+.health-rec-separator {
+  border: none;
+  border-top: 1px solid #000; /* Thin black line */
+  width: 100%;
+  margin: 0; /* Remove default margins */
+}
+
+/* Color schemes based on AQI levels */
+.health-rec-block.safe {
+  background-color: rgb(128, 190, 158); /* Dark Green (Good/Safe) */
+}
+
+.health-rec-block.moderate {
+  background-color: rgb(183, 232, 191); /* Light Green (Moderate) */
+}
+
+.health-rec-block.unhealthy-sensitive {
+  background-color: rgb(234, 209, 163); /* Yellow (Unhealthy for Sensitive Groups) */
+}
+
+.health-rec-block.unhealthy {
+  background-color: rgb(234, 177, 155); /* Orange (Unhealthy) */
+}
+
+.health-rec-block.very-unhealthy {
+  background-color: rgb(227, 132, 146); /* Red (Very Unhealthy) */
+}
+
+.health-rec-block.dangerous {
+  background-color: rgb(184, 163, 214); /* Purple (Hazardous) */
+}
