@@ -1,0 +1,26 @@
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #F9F9FF;; /* Example background, adjust to your needs */
+    width: 100%; /* Ensure navbar stretches full width */
+}
+/* .logo{
+    align-self: flex-start;
+    padding-right: 85vw;
+} */
+.links{
+    display: inline-flex;
+    align-items: center;
+    gap: 41px;
+}
+/* 
+.title{
+    display: flex;
+    width: 326.802px;
+    height: 57.222px;
+    flex-direction: column;
+    justify-content: center;
+} */
