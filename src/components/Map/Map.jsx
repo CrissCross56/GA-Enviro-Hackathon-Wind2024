@@ -38,11 +38,8 @@ export default function Map({ setCoordinates, resData }) {
             mapRef.current.addSource('raster-tiles', {
                 type: 'raster',
                 tiles: [
-                    `https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
+                    `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
                 ],
-                // tiles: [
-                //     `https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
-                // ],
                 tileSize: 256,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, OpenWeather',
             });
@@ -53,6 +50,11 @@ export default function Map({ setCoordinates, resData }) {
                 source: 'raster-tiles',
                 minzoom: 0,
                 maxzoom: 22,
+                paint: {
+                    'raster-brightness-min': 0.2, //  makes colors more intense
+                    'raster-brightness-max': 0.8,
+                    'raster-contrast': 0.7, // increases contrast to make colors pop
+                }
             });
         });
 
