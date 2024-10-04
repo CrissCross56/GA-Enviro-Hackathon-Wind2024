@@ -11,6 +11,7 @@ export default function OpenWeatherPage() {
     useEffect(() => {
         if (coordinates.lon && coordinates.lat) {
             fetchOpenWeatherApi();
+            // fetchMultipleWeatherData()
         }    
     }, [coordinates]);
 
@@ -51,9 +52,10 @@ export default function OpenWeatherPage() {
         }
     }
 
+
     return (
         <>
-            <Map setCoordinates={setCoordinates}  />
+            <Map setCoordinates={setCoordinates} resData={resData}  />
             {/* <button onClick={() => fetchOpenWeatherApi()}> CLICK ME: Search LA coordinates</button> */}
             <div >
                 {(openWeatherData) ? (JSON.stringify(openWeatherData))
