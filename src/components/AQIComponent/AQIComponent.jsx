@@ -1,6 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
+import "../../pages/HomePage/HomePage";
 import "./AQIComponent.css";
 
 // Register the ArcElement for Chart.js
@@ -163,6 +164,9 @@ const AQIComponent = ({ data }) => {
   };
 
   return (
+    <div className="aqi-card">
+
+
     <div className="aqi-card-updated">
       <h1 className="aqi-title">Air Quality Index</h1>
       <div style={{ position: "relative", height: "150px" }}>
@@ -184,6 +188,7 @@ const AQIComponent = ({ data }) => {
           Learn more about AQI
         </button>
       </div>
+    </div>
     </div>
   );
 };

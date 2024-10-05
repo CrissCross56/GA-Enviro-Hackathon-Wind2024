@@ -5,21 +5,25 @@ import AQIComponent from '../../components/AQIComponent/AQIComponent';
 import OpenWeatherPage from '../OpenWeatherPage/OpenWeatherPage';
 import HealthRecComponent from "../../components/HealthRecComponent/HealthRecComponent";
 import styles from "../../CSS/home.module.css";
+import "./HomePage.css";
 
 export default function HomePage() {
     // State to hold AQI data
     const [aqiData, setAqiData] = useState(null);
 
     return (
+        
         <div className={styles.homePg}>
             <NavBar />
-            <GeoLocationTest />
-            {/* Pass setAqiData to OpenWeatherPage */}
-            <OpenWeatherPage setAqiData={setAqiData} />
-            {/* Pass aqiData to HealthRecComponent */}
-            <HealthRecComponent aqiData={aqiData} />
-            {/* Pass aqiData to AQIComponent as 'data' */}
+            <div className={"container-map"} >
             <AQIComponent data={aqiData} />
+            {/* Pass aqiData to HealthRecComponent */}
+            <OpenWeatherPage setAqiData={setAqiData} />
+            {/* Pass aqiData to AQIComponent as 'data' */}
+            <HealthRecComponent aqiData={aqiData} />
+            {/* Pass setAqiData to OpenWeatherPage */}
+            <GeoLocationTest />
+        </div>
         </div>
     );
 }

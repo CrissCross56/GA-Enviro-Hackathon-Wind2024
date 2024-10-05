@@ -58,10 +58,10 @@ export default function OpenWeatherPage({ setAqiData }) {
         <>
             <Map setCoordinates={setCoordinates} resData={resData}  />
             {/* <button onClick={() => fetchOpenWeatherApi()}> CLICK ME: Search LA coordinates</button> */}
-            <div >
+            {/* <div >
                 {(openWeatherData) ? (JSON.stringify(openWeatherData))
                     : "Need to search something!"}
-            </div>
+            </div> */}
         </>
     )
 }

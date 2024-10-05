@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "./Map.css";
+import "../../pages/HomePage/HomePage";
 
 const INITIAL_CENTER = [
     -118.25,
@@ -82,8 +83,13 @@ export default function Map({ setCoordinates, resData }) {
 
     return (
         <>
-            <div id='map-container' ref={mapContainerRef} >
+        <div className="mapbox-card">
+
+            <div id='map-container'ref={mapContainerRef} >
             </div>
+        </div>
+            <div className="SafetyRanges">SafetyRanges</div>
+<div className="Pollutants">Pollutants</div>
         </>
     )
 }
