@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement, CategoryScale } from "chart.js";
 import "../../pages/HomePage/HomePage";
@@ -10,6 +10,7 @@ Chart.register(ArcElement, CategoryScale);
 
 const AQIComponent = ({ data }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [aqiValue, setAqiValue] = useState(null);
 
   // Extract the AQI index from the data prop
   const aqiIndex = data?.aqi;
@@ -70,8 +71,15 @@ const AQIComponent = ({ data }) => {
     }
   };
 
-  const aqiValue = mapIndexToAQI(aqiIndex);
+  // Update aqiValue whenever data changes
+  useEffect(() => {
+    if (aqiIndex) {
+      const newAqiValue = mapIndexToAQI(aqiIndex);
+      setAqiValue(newAqiValue);
+    }
+  }, [data]); // Update when 'data' changes
 
+  // Ensure aqiValue is available before proceeding
   if (aqiValue === null || aqiValue < 0 || aqiValue > 500) {
     console.error("Invalid or missing AQI value. It must be between 0 and 500.");
     return (
@@ -128,7 +136,13 @@ const AQIComponent = ({ data }) => {
           <Doughnut data={chartData} options={options} />
           <div className="aqi-text-updated">
             <h2 className="aqi-number">{aqiValue}</h2>
-            <p className="aqi-status">{aqiIndex < 3 ? "GOOD" : aqiIndex === 3 ? "MODERATE" : "VERY UNHEALTHY"}</p>
+            <p className="aqi-status">
+              {aqiIndex < 3
+                ? "GOOD"
+                : aqiIndex === 3
+                ? "MODERATE"
+                : "VERY UNHEALTHY"}
+            </p>
           </div>
         </div>
         <div className="aqi-bottom-labels">
@@ -136,10 +150,16 @@ const AQIComponent = ({ data }) => {
           <span className="aqi-max-label">500</span>
         </div>
         <div className="aqi-description">
-          <p>Air quality is considered satisfactory for sensitive groups, with health risks increasing beyond this level.</p>
+          <p>
+            Air quality is considered satisfactory for sensitive groups, with
+            health risks increasing beyond this level.
+          </p>
         </div>
         <div className="aqi-button-container">
-          <button className="aqi-alert-button-updated" onClick={() => setIsPopupVisible(true)}>
+          <button
+            className="aqi-alert-button-updated"
+            onClick={() => setIsPopupVisible(true)}
+          >
             Create Alerts for AQI Changes
           </button>
           <br />
