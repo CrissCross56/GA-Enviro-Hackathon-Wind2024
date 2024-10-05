@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import * as openWeatherApi from '../../utils/openWeatherApi';
 import Map from "../../components/Map/Map"
 
-export default function OpenWeatherPage() {
+export default function OpenWeatherPage({ setAqiData }) {
     const [openWeatherData, setOpenWeatherData] = useState(null)
     const [resData, setResData] = useState(null)
     const [error, setError] = useState('')
@@ -45,6 +45,7 @@ export default function OpenWeatherPage() {
             }
             console.log('data', data)
             setResData(data)
+            setAqiData(data);
             // setError('')
         } catch (err) {
             console.log(err)
