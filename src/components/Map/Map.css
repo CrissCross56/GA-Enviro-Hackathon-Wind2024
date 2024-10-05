@@ -8,9 +8,14 @@
 
 #map-container {
     height: 500px;
-    width: 910px;
+    width: 70%;
+    /* max-width: 600px; */
     border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     background-color: lightgrey;
+    margin: 20px;
+
+
 }
 
 .sidebar {
@@ -26,13 +31,47 @@
     border-radius: 4px;
 }
 
-.reset-button {
+/* .reset-button {
     position: absolute;
     top: 32px;
     z-index: 1;
     left: 887px;
-    /* right: 50px; */
     padding: 4px 10px;
     border-radius: 10px;
     cursor: pointer;
+} */
+
+/* @media (max-width: 600px) {
+    .map-container {
+        width: 100%;
+        margin: 10px auto;
+    }
+} */
+
+.mapboxgl-ctrl-compass {
+    display: none !important;
 }
+
+.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-zoom-out {
+    /* background-color: #ffffff; */
+    border-radius: 0;
+    border: none;
+}
+
+.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-zoom-out {
+    outline: none !important;
+}
+
+
+.mapboxgl-ctrl-attrib-button {
+    border: none;
+    padding: 5px !important;
+}
+
+.mapboxgl-ctrl-attrib-button:focus {
+    outline: none !important;   /* This fixed the shadow glow from info trademark*/
+    box-shadow: none;           
+}
+
