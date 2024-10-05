@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import * as openWeatherApi from '../../utils/openWeatherApi';
 import Map from "../../components/Map/Map"
 
-export default function OpenWeatherPage({ setAqiData }) {
+export default function OpenWeatherPage() {
     const [openWeatherData, setOpenWeatherData] = useState(null)
     const [resData, setResData] = useState(null)
     const [error, setError] = useState('')
@@ -45,7 +45,6 @@ export default function OpenWeatherPage({ setAqiData }) {
             }
             console.log('data', data)
             setResData(data)
-            setAqiData(data);
             // setError('')
         } catch (err) {
             console.log(err)
@@ -57,6 +56,7 @@ export default function OpenWeatherPage({ setAqiData }) {
     return (
         <>
             <Map setCoordinates={setCoordinates} resData={resData}  />
+            {/* <button onClick={() => fetchOpenWeatherApi()}> CLICK ME: Search LA coordinates</button> */}
             <div >
                 {(openWeatherData) ? (JSON.stringify(openWeatherData))
                     : "Need to search something!"}
