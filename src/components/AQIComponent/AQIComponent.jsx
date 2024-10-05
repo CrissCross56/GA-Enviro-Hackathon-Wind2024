@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
-import AlertPopup from "../AlertPopup/AlertPopup";
+import "../../pages/HomePage/HomePage";
 import "./AQIComponent.css";
 
 // Register the ArcElement for Chart.js
@@ -10,19 +10,6 @@ Chart.register(ArcElement);
 const AQIComponent = ({ data }) => {
   // Extract the AQI index from the data prop
   const aqiIndex = data?.aqi;
-
-  // State to manage the visibility of the AlertPopup
-  const [showAlertPopup, setShowAlertPopup] = useState(false);
-
-  // Function to handle the "Create Alerts" button click
-  const handleAlertButtonClick = () => {
-    setShowAlertPopup(true);
-  };
-
-  // Function to handle closing the popup
-  const handleClosePopup = () => {
-    setShowAlertPopup(false);
-  };
 
   // Validate aqiIndex
   if (typeof aqiIndex !== 'number' || aqiIndex < 1 || aqiIndex > 6) {
@@ -177,6 +164,9 @@ const AQIComponent = ({ data }) => {
   };
 
   return (
+    <div className="aqi-card">
+
+
     <div className="aqi-card-updated">
       <h1 className="aqi-title">Air Quality Index</h1>
       <div style={{ position: "relative", height: "150px" }}>
@@ -190,10 +180,7 @@ const AQIComponent = ({ data }) => {
         <p>{aqiDescription}</p>
       </div>
       <div className="aqi-button-container">
-        <button
-          className="aqi-alert-button-updated"
-          onClick={handleAlertButtonClick}
-        >
+        <button className="aqi-alert-button-updated">
           Create Alerts for AQI Changes
         </button>
         <br />
@@ -201,8 +188,7 @@ const AQIComponent = ({ data }) => {
           Learn more about AQI
         </button>
       </div>
-      {/* Include the AlertPopup component when showAlertPopup is true */}
-      {showAlertPopup && <AlertPopup onClose={handleClosePopup} />}
+    </div>
     </div>
   );
 };
