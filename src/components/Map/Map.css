@@ -27,37 +27,6 @@
     0px 8px 25px 0px rgba(53, 54, 66, 0.1);
 }
 
-/* 
-.sidebar {
-    background-color: rgb(35 55 75 / 90%);
-    color: #fff;
-    padding: 6px 12px;
-    font-family: monospace;
-    z-index: 1;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    margin: 12px;
-    border-radius: 4px;
-} */
-
-/* .reset-button {
-    position: absolute;
-    top: 32px;
-    z-index: 1;
-    left: 887px;
-    padding: 4px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-} */
-
-/* @media (max-width: 600px) {
-    .map-container {
-        width: 100%;
-        margin: 10px auto;
-    }
-} */
-
 .mapboxgl-ctrl-compass {
     display: none !important;
 }
@@ -78,10 +47,21 @@
 .mapboxgl-ctrl-attrib-button {
     border: none;
     padding: 5px !important;
+    font-size: 1px !important; 
+    
 }
 
 .mapboxgl-ctrl-attrib-button:focus {
     outline: none !important;   /* This fixed the shadow glow from info trademark*/
-    box-shadow: none;           
+    box-shadow: none;  
+             
 }
 
+.mapboxgl-ctrl-logo {
+    display: none !important;
+}
+
+.mapboxgl-ctrl-bottom-right .mapboxgl-ctrl, .mapboxgl-ctrl-right .mapboxgl-ctrl {
+
+    transform: scale(0.7);
+}
