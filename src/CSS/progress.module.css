@@ -1,9 +1,4 @@
-.progressContainer {
-  /* width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-}
+
 /* 
 .progressBar {
   -webkit-appearance: none;
@@ -35,12 +30,15 @@
 } */
 .progressContainer {
   width: 696px;
-  height: 28px;
+  height: 10px;
   flex-shrink: 0;
   background-color: lightgray; /* Background color of the unfilled part */
   border-radius: 10px; /* Rounded corners */
   overflow: hidden; /* Ensures child div doesn't overflow out of the parent */
   position: relative;
+  margin-right: 10%;
+  margin-left: 20px;
+  margin-top: 1px;
 }
 
 .progressBar {
@@ -63,24 +61,28 @@
 .title{
   width: 223px;
   height: 33px;
+  margin-top: 18px;
+  margin-left: 19px;
   flex-shrink: 0;
   color: #000;
-
-/* Title/H1/SemiBold */
-font-family: var(--Family-Title_Inter, Inter);
-font-size: var(--Size-24, 24px);
-font-style: normal;
-font-weight: 600;
-line-height: 120%; /* 28.8px */
+  /* border: 1px solid red; */
+  /* Title/H1/SemiBold */
+  font-family: var(--Family-Title_Inter, Inter);
+  font-size: var(--Size-24, 24px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 28.8px */
+  
 }
 
 .more{
   width: 149px;
   height: 13.246px;
   flex-shrink: 0;
-
+  margin-top: -15px;
+  margin-left: 21px;
   color: var(--Main---Blue, #454ADE);
-
+  /* border: 1px solid black; */
   /* Body/XS/Regular */
   font-family: var(--Family-Body_Inter, Inter);
   font-size: var(--Size-12, 12px);
@@ -93,6 +95,92 @@ line-height: 120%; /* 28.8px */
 
 .name{
   color: #000;
+  /* border: 1px solid orange; */
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size:  12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+  margin-bottom: 1px;
+}
+
+.pollutant{
+  color: #000;
+  /* border: 1px solid green; */
+  /* Body/Base/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.comp{
+  display: inline-flex;
+  /* border: 1px solid red; */
+}
+
+.concentrationLabel{
+  color: #000;
+  text-align: right;
+
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-12, 12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+  margin-bottom: 1px;
+}
+
+
+.concentration{
+  color: #000;
+  text-align: right;
+
+  /* Body/Base/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-16, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.concentrationUnits{
+  color: #000;
+
+  /* Body/Small/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-14, 14px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 16.8px */
+}
+
+.range{
+  /* border: 1px solid orange; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 25px;
+  padding-right: 15px;
+  margin-top: 10px;
+}
+.zero{
+  color: #000;
+
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-12, 12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+}
+.maxNumRange{
+  color: #000;
+  text-align: right;
 
   /* Body/XS/Regular */
   font-family: var(--Family-Body_Inter, Inter);
@@ -102,13 +190,17 @@ line-height: 120%; /* 28.8px */
   line-height: 120%; /* 14.4px */
 }
 
-.pollutant{
-  color: #000;
+.pollDiv{
+  margin-left: 20px;
+}
 
-  /* Body/Base/Regular */
-  font-family: var(--Family-Body_Inter, Inter);
-  font-size: var(--Size-16, 16px);
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+.concentrationDiv{
+  margin-left: 40px;
+}
+
+.separator{
+  width: 972px;
+  height: 0.5px;
+  background: #888;
+  margin-bottom: 15px;
 }
