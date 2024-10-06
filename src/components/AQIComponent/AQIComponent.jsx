@@ -8,14 +8,14 @@ import AlertPopup from '../AlertPopup/AlertPopup';
 // Register the necessary chart elements
 Chart.register(ArcElement, CategoryScale);
 
-const AQIComponent = ({ data }) => {
+const AQIComponent = ({ data, onAlertCreate }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [aqiValue, setAqiValue] = useState(null);
 
   // Extract the AQI index from the data prop
   const aqiIndex = data?.aqi;
 
-  // Move mapIndexToAQI above useEffect
+  // Map index to AQI value
   const mapIndexToAQI = (index) => {
     const aqiRanges = [
       { min: 0, max: 50 },     // Index 1: Good
@@ -39,7 +39,46 @@ const AQIComponent = ({ data }) => {
     return aqiValue;
   };
 
-  // Update aqiValue whenever data changes
+  // Get color for AQI index
+  const getColorForAQIIndex = (index) => {
+    switch (index) {
+      case 1:
+        return "rgb(128, 190, 158)"; // Dark Green (Good/Safe)
+      case 2:
+        return "rgb(183, 232, 191)"; // Light Green (Moderate)
+      case 3:
+        return "rgb(234, 209, 163)"; // Yellow (Unhealthy for Sensitive Groups)
+      case 4:
+        return "rgb(234, 177, 155)"; // Orange (Unhealthy)
+      case 5:
+      case 6:
+        return "rgb(184, 163, 214)"; // Purple (Very Unhealthy/Hazardous)
+      default:
+        return "#7ec8a9"; // Default color if index is invalid
+    }
+  };
+
+  // Get description for AQI index
+  const getDescriptionForAQIIndex = (index) => {
+    switch (index) {
+      case 1:
+        return "Air quality is considered satisfactory, and air pollution poses little or no risk.";
+      case 2:
+        return "Air quality is acceptable; however, there may be a moderate health concern for a very small number of people.";
+      case 3:
+        return "Members of sensitive groups may experience health effects. The general public is not likely to be affected.";
+      case 4:
+        return "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.";
+      case 5:
+        return "Health alert: everyone may experience more serious health effects.";
+      case 6:
+        return "Health warnings of emergency conditions. The entire population is more likely to be affected.";
+      default:
+        return "Air quality information is unavailable.";
+    }
+  };
+
+  // Update aqiValue whenever aqiIndex changes
   useEffect(() => {
     if (typeof aqiIndex === 'number' && aqiIndex >= 1 && aqiIndex <= 6) {
       const newAqiValue = mapIndexToAQI(aqiIndex);
@@ -76,25 +115,8 @@ const AQIComponent = ({ data }) => {
     );
   }
 
-  const getColorForAQIIndex = (index) => {
-    switch (index) {
-      case 1:
-        return "rgb(128, 190, 158)"; // Dark Green (Good/Safe)
-      case 2:
-        return "rgb(183, 232, 191)"; // Light Green (Moderate)
-      case 3:
-        return "rgb(234, 209, 163)"; // Yellow (Unhealthy for Sensitive Groups)
-      case 4:
-        return "rgb(234, 177, 155)"; // Orange (Unhealthy)
-      case 5:
-      case 6:
-        return "rgb(184, 163, 214)"; // Purple (Very Unhealthy/Hazardous)
-      default:
-        return "#7ec8a9"; // Default color if index is invalid
-    }
-  };
-
   const aqiColor = getColorForAQIIndex(aqiIndex);
+  const aqiDescription = getDescriptionForAQIIndex(aqiIndex);
 
   const chartData = {
     datasets: [
@@ -129,6 +151,14 @@ const AQIComponent = ({ data }) => {
     },
   };
 
+  // Function to close the popup and trigger the notification
+  const handleClosePopup = () => {
+    setIsPopupVisible(false);
+    if (onAlertCreate) {
+      onAlertCreate(); // Trigger the notification in HomePage
+    }
+  };
+
   return (
     <div className="aqi-card">
       <div className="aqi-card-updated">
@@ -138,11 +168,17 @@ const AQIComponent = ({ data }) => {
           <div className="aqi-text-updated">
             <h2 className="aqi-number">{aqiValue}</h2>
             <p className="aqi-status">
-              {aqiIndex < 3
+              {aqiIndex === 1
                 ? "GOOD"
-                : aqiIndex === 3
+                : aqiIndex === 2
                 ? "MODERATE"
-                : "VERY UNHEALTHY"}
+                : aqiIndex === 3
+                ? "UNHEALTHY FOR SENSITIVE GROUPS"
+                : aqiIndex === 4
+                ? "UNHEALTHY"
+                : aqiIndex === 5
+                ? "VERY UNHEALTHY"
+                : "HAZARDOUS"}
             </p>
           </div>
         </div>
@@ -151,10 +187,7 @@ const AQIComponent = ({ data }) => {
           <span className="aqi-max-label">500</span>
         </div>
         <div className="aqi-description">
-          <p>
-            Air quality is considered satisfactory for sensitive groups, with
-            health risks increasing beyond this level.
-          </p>
+          <p>{aqiDescription}</p>
         </div>
         <div className="aqi-button-container">
           <button
@@ -171,7 +204,7 @@ const AQIComponent = ({ data }) => {
       </div>
 
       {isPopupVisible && (
-        <AlertPopup onClose={() => setIsPopupVisible(false)} />
+        <AlertPopup onClose={handleClosePopup} />
       )}
     </div>
   );
