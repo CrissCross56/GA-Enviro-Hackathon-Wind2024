@@ -28,6 +28,9 @@ const AlertPopup = ({ onClose, onAlertCreate }) => {
   return (
     <div className="alert-popup-overlay" onClick={onClose}>
       <div className="alert-popup" onClick={(e) => e.stopPropagation()}>
+        {/* Close button */}
+        <button className="close-btn" onClick={onClose}>X</button>
+
         <h1>BreatheWell</h1>
         <p className="description">
           Create personalized alerts to get real-time air quality insights so you can make the right health decisions for you and your family.
