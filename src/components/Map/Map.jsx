@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import "./Map.css";
 import "../../pages/HomePage/HomePage";
+import "./Map.css";
 
 const INITIAL_CENTER = [
     -118.25,
@@ -15,8 +15,10 @@ export default function Map({ setCoordinates, resData }) {
     const mapContainerRef = useRef()
     const [center, setCenter] = useState(INITIAL_CENTER)
     const [zoom, setZoom] = useState(INITIAL_ZOOM)
+    
 
     useEffect(() => {
+        
         // mapboxgl.accessToken = "password"
         mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
         console.log("mapboxgl.accessToken", mapboxgl.accessToken)
@@ -45,18 +47,18 @@ export default function Map({ setCoordinates, resData }) {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, OpenWeather',
             });
 
-            mapRef.current.addLayer({
-                id: 'simple-tiles',
-                type: 'raster',
-                source: 'raster-tiles',
-                minzoom: 0,
-                maxzoom: 22,
-                paint: {
-                    'raster-brightness-min': 0.2, //  makes colors more intense
-                    'raster-brightness-max': 0.8,
-                    'raster-contrast': 0.7, // increases contrast to make colors pop
-                }
-            });
+            // mapRef.current.addLayer({
+            //     id: 'simple-tiles',
+            //     type: 'raster',
+            //     source: 'raster-tiles',
+            //     minzoom: 0,
+            //     maxzoom: 22,
+            //     paint: {
+            //         'raster-brightness-min': 0.2, //  makes colors more intense
+            //         'raster-brightness-max': 0.8,
+            //         'raster-contrast': 0.7, // increases contrast to make colors pop
+            //     }
+            // });
         });
 
         //Can use "move" but that tracks all the movement on the map. "MoveEnd " tracks map movement on the end of where the map is set
