@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AlertPopup.css';
 
-const AlertPopup = ({ onClose }) => {
+const AlertPopup = ({ onClose, onAlertCreate }) => {
   const [threshold, setThreshold] = useState({
     good: 'below',
     moderate: 'below',
@@ -10,6 +10,7 @@ const AlertPopup = ({ onClose }) => {
     veryUnhealthy: 'below',
     hazardous: 'below',
   });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleRadioChange = (level, value) => {
     setThreshold({ ...threshold, [level]: value });
@@ -17,8 +18,11 @@ const AlertPopup = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Alert created successfully!');
-    onClose(); // Close popup after submission
+    setShowSuccessMessage(true);
+    onClose(); // Close the popup immediately after submission
+    if (onAlertCreate) {
+      onAlertCreate(); // Trigger the notification on the homepage
+    }
   };
 
   return (
@@ -68,6 +72,13 @@ const AlertPopup = ({ onClose }) => {
           ))}
           <button type="submit" className="save-alert-btn">Save Alert Settings</button>
         </form>
+
+        {/* Success Message */}
+        {showSuccessMessage && (
+          <div className="success-message">
+            <p>Alert created successfully!</p>
+          </div>
+        )}
       </div>
     </div>
   );

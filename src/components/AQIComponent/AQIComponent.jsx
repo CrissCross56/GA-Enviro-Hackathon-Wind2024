@@ -8,7 +8,7 @@ import AlertPopup from '../AlertPopup/AlertPopup';
 // Register the necessary chart elements
 Chart.register(ArcElement, CategoryScale);
 
-const AQIComponent = ({ data }) => {
+const AQIComponent = ({ data, onAlertCreate }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [aqiValue, setAqiValue] = useState(null);
 
@@ -151,6 +151,14 @@ const AQIComponent = ({ data }) => {
     },
   };
 
+  // Function to close the popup and trigger the notification
+  const handleClosePopup = () => {
+    setIsPopupVisible(false);
+    if (onAlertCreate) {
+      onAlertCreate(); // Trigger the notification in HomePage
+    }
+  };
+
   return (
     <div className="aqi-card">
       <div className="aqi-card-updated">
@@ -196,7 +204,7 @@ const AQIComponent = ({ data }) => {
       </div>
 
       {isPopupVisible && (
-        <AlertPopup onClose={() => setIsPopupVisible(false)} />
+        <AlertPopup onClose={handleClosePopup} />
       )}
     </div>
   );

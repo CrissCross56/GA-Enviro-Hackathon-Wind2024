@@ -116,6 +116,7 @@
   text-align: left; /* Align text to the left */
   flex: 1; /* Ensures it takes up available space */
 }
+
 /* Save Alert Button */
 .save-alert-btn {
   width: 200px;
@@ -135,6 +136,18 @@
 
 .save-alert-btn:hover {
   background-color: #3b42c6;
+}
+
+/* Success Message */
+.success-message {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 10px;
+  margin-top: 15px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #d6e9c6;
+  font-weight: bold;
 }
 
 /* Responsive Adjustments */
