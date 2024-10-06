@@ -9,7 +9,7 @@ export default function Pollutants(props) {
         <div className={styles.pollutants}>
              <h1 className={styles.title}>Pollutants</h1>
              <h3 className={styles.more}>Learn More</h3>
-            <ProgressBar name={'Fine Particle Matter'} pollutant={`PM 2.5`} value={250} max={500} concentration={13} units={`μg/m3`} good={12} moderate={35.4} unhealthySens={55.4} unhealthy={150.4} veryUnhealthy={250.4} hazardous={500}></ProgressBar>
+            <ProgressBar name={'Fine Particle Matter'} pollutant={`PM 2.5`} value={480} max={500} concentration={480} units={`μg/m3`} good={12} moderate={35.4} unhealthySens={55.4} unhealthy={150.4} veryUnhealthy={250.4} hazardous={500}></ProgressBar>
             {/* make a horizontal grey line here */}
             <hr className={styles.separator}/>
             <ProgressBar name={'Coarse Particle Matter'} pollutant={`PM 10`} value={400} max={604} concentration={400} units={`μg/m3`} good={54} moderate={154} unhealthySens={254} unhealthy={354} veryUnhealthy={424} hazardous={604}></ProgressBar>

@@ -50,7 +50,10 @@ export default function ProgressBar(props) {
         if(props.value > veryUnhealthy && props.value <= hazardous){
             setBarColor(hazardousColor)
         }
-    })
+        if(props.value >= hazardous){
+            setBarColor(hazardousColor)
+        }
+    }, [props.value])
 
     const progressPercentage = (props.value / props.max) * 100; // Calculate the width of the filled bar based on the current value
 
