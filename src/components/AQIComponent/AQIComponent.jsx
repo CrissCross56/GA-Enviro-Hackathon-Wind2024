@@ -124,13 +124,12 @@ const AQIComponent = ({ data, onAlertCreate }) => {
         data: [aqiValue, 500 - aqiValue],
         backgroundColor: [aqiColor, "#e0e0e0"],
         borderWidth: 0,
-        cutout: "80%",
+        cutout: "90%", // Increase this value to make the chart thinner
         rotation: -90,
         circumference: 180,
       },
     ],
   };
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,
