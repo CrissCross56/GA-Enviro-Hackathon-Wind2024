@@ -82,7 +82,7 @@ export default function ProgressBar(props) {
             </div>
             <div className={styles.concentrationDiv}> 
                 <h3 className={styles.concentrationLabel}>Concentration</h3>
-                <p className={styles.concentrationUnits}><span className={styles.concentration}>{props.concentration}</span>{props.units}</p>
+                <p className={styles.concentrationUnits}><span className={styles.concentration}>{props.value}</span>{props.units}</p>
             </div>
            
          

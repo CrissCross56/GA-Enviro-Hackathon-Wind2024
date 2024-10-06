@@ -51,6 +51,7 @@
 .pollutants{
   width: 1013px;
   height: 316px;
+  /* align-self: stretch; */
   border-radius: 16px;
   background: var(--Main---Elements, #FFF);
 

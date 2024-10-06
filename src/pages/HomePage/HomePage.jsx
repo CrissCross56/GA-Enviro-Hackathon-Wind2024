@@ -6,7 +6,8 @@ export default function HomePage(){
     return(
     <div className={styles.homePg}>
         <NavBar></NavBar>
-        <Pollutants></Pollutants>
+        {/* have placeholder values for the pollutants for a later api call result */}
+        <Pollutants pm25={36} pm10={300} n02={500}></Pollutants>
         <GeoLocationTest></GeoLocationTest>
     </div>
     )
