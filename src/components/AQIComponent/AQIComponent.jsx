@@ -15,20 +15,7 @@ const AQIComponent = ({ data }) => {
   // Extract the AQI index from the data prop
   const aqiIndex = data?.aqi;
 
-  // Validate aqiIndex
-  if (typeof aqiIndex !== 'number' || aqiIndex < 1 || aqiIndex > 6) {
-    console.error("Invalid or missing aqiIndex", aqiIndex);
-    return (
-      <div className="aqi-error-message">
-        <h1>Error: AQI index is invalid or not available</h1>
-        <p>
-          The AQI index provided is invalid or not available. Please check the
-          data source.
-        </p>
-      </div>
-    );
-  }
-
+  // Move mapIndexToAQI above useEffect
   const mapIndexToAQI = (index) => {
     const aqiRanges = [
       { min: 0, max: 50 },     // Index 1: Good
@@ -52,34 +39,30 @@ const AQIComponent = ({ data }) => {
     return aqiValue;
   };
 
-  const getColorForAQIIndex = (index) => {
-    switch (index) {
-      case 1:
-        return "rgb(128, 190, 158)"; // Dark Green (Good/Safe)
-      case 2:
-        return "rgb(183, 232, 191)"; // Light Green (Moderate)
-      case 3:
-        return "rgb(234, 209, 163)"; // Yellow (Unhealthy for Sensitive Groups)
-      case 4:
-        return "rgb(234, 177, 155)"; // Orange (Unhealthy)
-      case 5:
-        return "rgb(184, 163, 214)"; // Purple (Hazardous)
-      case 6:
-        return "rgb(184, 163, 214)"; // Purple (Hazardous)
-      default:
-        return "#7ec8a9"; // Default color if index is invalid
-    }
-  };
-
   // Update aqiValue whenever data changes
   useEffect(() => {
-    if (aqiIndex) {
+    if (typeof aqiIndex === 'number' && aqiIndex >= 1 && aqiIndex <= 6) {
       const newAqiValue = mapIndexToAQI(aqiIndex);
       setAqiValue(newAqiValue);
+    } else {
+      setAqiValue(null); // Reset aqiValue if aqiIndex is invalid
     }
-  }, [data]); // Update when 'data' changes
+  }, [aqiIndex]); // Use 'aqiIndex' as dependency
 
-  // Ensure aqiValue is available before proceeding
+  // Now validate aqiIndex and aqiValue after hooks
+  if (typeof aqiIndex !== 'number' || aqiIndex < 1 || aqiIndex > 6) {
+    console.error("Invalid or missing aqiIndex", aqiIndex);
+    return (
+      <div className="aqi-error-message">
+        <h1>Error: AQI index is invalid or not available</h1>
+        <p>
+          The AQI index provided is invalid or not available. Please check the
+          data source.
+        </p>
+      </div>
+    );
+  }
+
   if (aqiValue === null || aqiValue < 0 || aqiValue > 500) {
     console.error("Invalid or missing AQI value. It must be between 0 and 500.");
     return (
@@ -93,17 +76,35 @@ const AQIComponent = ({ data }) => {
     );
   }
 
+  const getColorForAQIIndex = (index) => {
+    switch (index) {
+      case 1:
+        return "rgb(128, 190, 158)"; // Dark Green (Good/Safe)
+      case 2:
+        return "rgb(183, 232, 191)"; // Light Green (Moderate)
+      case 3:
+        return "rgb(234, 209, 163)"; // Yellow (Unhealthy for Sensitive Groups)
+      case 4:
+        return "rgb(234, 177, 155)"; // Orange (Unhealthy)
+      case 5:
+      case 6:
+        return "rgb(184, 163, 214)"; // Purple (Very Unhealthy/Hazardous)
+      default:
+        return "#7ec8a9"; // Default color if index is invalid
+    }
+  };
+
   const aqiColor = getColorForAQIIndex(aqiIndex);
 
   const chartData = {
     datasets: [
       {
-        data: [aqiValue, 500 - aqiValue], // AQI value and remaining to 500
-        backgroundColor: [aqiColor, "#e0e0e0"], // Use the mapped color
-        borderWidth: 0, // Remove the border
-        cutout: "80%", // Inner radius
-        rotation: -90, // Start angle
-        circumference: 180, // Sweep angle (half-circle)
+        data: [aqiValue, 500 - aqiValue],
+        backgroundColor: [aqiColor, "#e0e0e0"],
+        borderWidth: 0,
+        cutout: "80%",
+        rotation: -90,
+        circumference: 180,
       },
     ],
   };
@@ -111,19 +112,19 @@ const AQIComponent = ({ data }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    rotation: -Math.PI, // Start angle (half-circle)
-    circumference: Math.PI, // End angle (half-circle)
+    rotation: -Math.PI,
+    circumference: Math.PI,
     plugins: {
-      tooltip: { enabled: false }, // Disable tooltip
+      tooltip: { enabled: false },
     },
     layout: {
       padding: {
-        bottom: 20, // Add padding at the bottom for the labels
+        bottom: 20,
       },
     },
     elements: {
       arc: {
-        borderWidth: 0, // Remove arc border
+        borderWidth: 0,
       },
     },
   };
@@ -170,7 +171,7 @@ const AQIComponent = ({ data }) => {
       </div>
 
       {isPopupVisible && (
-        <AlertPopup onClose={() => setIsPopupVisible(false)} /> // Show AlertPopup if isPopupVisible is true
+        <AlertPopup onClose={() => setIsPopupVisible(false)} />
       )}
     </div>
   );
