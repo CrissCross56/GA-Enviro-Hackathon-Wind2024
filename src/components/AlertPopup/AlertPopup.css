@@ -1,0 +1,44 @@
+/* AlertPopup.css */
+.alert-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .alert-popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+  }
+  
+  .alert-popup h2 {
+    margin-top: 0;
+  }
+  
+  .alert-popup form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .alert-popup label {
+    margin-bottom: 10px;
+  }
+  
+  .alert-popup input,
+  .alert-popup select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  .alert-popup button {
+    margin-top: 10px;
+  }
