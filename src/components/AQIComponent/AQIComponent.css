@@ -37,7 +37,7 @@
 }
 
 .aqi-status {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
   margin: 0;
   color: black;
@@ -113,4 +113,22 @@ p {
   font-size: 14px;
   line-height: 1.5;
   color: #666;
+}
+
+.aqi-bottom-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 45px; /* This is good for the 0 */
+  margin-top: -15px; /* Keep the labels closer to the chart */
+}
+
+.aqi-min-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.aqi-max-label {
+  font-size: 14px;
+  color: #666;
+  margin-right: -6px; /* Adjust this to move the 500 label left */
 }
