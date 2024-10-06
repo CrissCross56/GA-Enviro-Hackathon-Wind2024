@@ -2,4 +2,35 @@
     width: 100%;
     border-bottom: 1px solid #00000029;
     border-top: 1px solid #00000029;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.add{
+    margin-left: 20px;
+    margin-top: 5.5px;
+    /* padding-top: 10px; */
+}
+
+/* css for the ellipse and the locations */
+.location{
+    display: flex;
+    flex-direction: row;
+    border-right: 1px solid #00000029;
+    padding-right: 10px;
+}
+
+.ellipse{
+    padding-top: 15px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+}
+
+.cityState{
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
 }

@@ -60,7 +60,7 @@ export default function ProgressBar(props) {
     return (
         <div className={styles.comp}>
             <div className={styles.pollDiv}>
-                <h3 className={styles.name}>{props.name}</h3>
+                <h3 className={styles.name}>{props.name}<span className={styles.buffer}>{props.buffer}</span></h3>
                 <p className={styles.pollutant}>{props.pollutant}</p>
             </div>
            

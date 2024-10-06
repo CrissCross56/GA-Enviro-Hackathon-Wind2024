@@ -9,7 +9,7 @@ export default function HomePage(){
         <NavBar></NavBar>
         <LocationBar/>
         {/* have placeholder values for the pollutants for a later api call result */}
-        <Pollutants pm25={36} pm10={300} n02={500}></Pollutants>
+        <Pollutants pm25={20} pm10={40} n02={50}></Pollutants>
         <GeoLocationTest></GeoLocationTest>
     </div>
     )

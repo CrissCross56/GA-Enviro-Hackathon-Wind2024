@@ -52,6 +52,7 @@
   width: 1013px;
   height: 316px;
   /* align-self: stretch; */
+  /* display: inline-block; */
   border-radius: 16px;
   background: var(--Main---Elements, #FFF);
 
@@ -204,4 +205,12 @@
   height: 0.5px;
   background: #888;
   margin-bottom: 15px;
+}
+
+.buffer{
+  color: white;
+}
+
+.buffer::selection{
+  color: white;
 }
