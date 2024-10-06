@@ -30,16 +30,16 @@ const AlertPopup = ({ onClose }) => {
         </p>
         <form onSubmit={handleSubmit} className="alert-form">
           {[
-            { level: 'good', label: 'Good' },
+            { level: 'good', label: 'Good', disableAbove: true }, // Disable 'Above' for first option
             { level: 'moderate', label: 'Moderate' },
             { level: 'unhealthySensitive', label: 'Unhealthy for sensitive people' },
             { level: 'unhealthy', label: 'Unhealthy' },
             { level: 'veryUnhealthy', label: 'Very unhealthy' },
-            { level: 'hazardous', label: 'Dangerous' },
-          ].map(({ level, label }) => (
+            { level: 'hazardous', label: 'Dangerous', disableBelow: true }, // Disable 'Below' for last option
+          ].map(({ level, label, disableAbove, disableBelow }) => (
             <div className="alert-option" key={level}>
               <span className="left-text">Alert me when AQI goes</span>
-              <label className={`radio-button ${threshold[level] === 'below' ? 'active' : ''}`}>
+              <label className={`radio-button ${threshold[level] === 'below' ? 'active' : ''} ${disableBelow ? 'disabled' : ''}`}>
                 Below
                 <input
                   type="radio"
@@ -48,9 +48,10 @@ const AlertPopup = ({ onClose }) => {
                   checked={threshold[level] === 'below'}
                   onChange={() => handleRadioChange(level, 'below')}
                   hidden
+                  disabled={disableBelow} // Disable 'Below' if necessary
                 />
               </label>
-              <label className={`radio-button ${threshold[level] === 'above' ? 'active' : ''}`}>
+              <label className={`radio-button ${threshold[level] === 'above' ? 'active' : ''} ${disableAbove ? 'disabled' : ''}`}>
                 Above
                 <input
                   type="radio"
@@ -59,6 +60,7 @@ const AlertPopup = ({ onClose }) => {
                   checked={threshold[level] === 'above'}
                   onChange={() => handleRadioChange(level, 'above')}
                   hidden
+                  disabled={disableAbove} // Disable 'Above' if necessary
                 />
               </label>
               <span className="label-text">{label}</span>

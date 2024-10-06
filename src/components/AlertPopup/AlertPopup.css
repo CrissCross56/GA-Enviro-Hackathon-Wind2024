@@ -92,7 +92,19 @@
   cursor: pointer;
   background-color: #fff;
   transition: background-color 0.3s, color 0.3s;
-  margin: 0 10px; /* Adds margin to space out the buttons */
+  margin: 0 10px;
+}
+
+.radio-button.active {
+  background-color: #454ADE; /* Blue background when selected */
+  color: #fff;
+}
+
+.radio-button.disabled {
+  background-color: #ccc; /* Gray color for disabled state */
+  color: #888; /* Text color for disabled state */
+  cursor: not-allowed; /* Changes the cursor to indicate it's not clickable */
+  pointer-events: none; /* Prevents any click events */
 }
 
 /* Label Text */
