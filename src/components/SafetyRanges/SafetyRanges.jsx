@@ -1,4 +1,6 @@
+
 import  "./safetyRange.css"
+
 export default function SafetyRanges(){
     return(
         <div className="safetyBox">

@@ -2,15 +2,27 @@
     display: grid;
     grid-template-areas: 
         "aqi-card mapbox-card"
-        "health-rec-card-component pollutants"
-        "safetyranges pollutants";
+        "health-rec-card-component safety-ranges"
+        "health-rec-card-component pollutants";
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto auto;
     gap: 30px;
     padding: 20px;
     max-width: 1200px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    
+    
 }
+.outer-container {
+    display: flex;                   /* Use flexbox */
+    justify-content: center;         /* Center horizontally */
+    align-items: center;             /* Center vertically */
+    min-height: 100vh;               /* Full height of the viewport */
+    width: 100%;                     /* Full width to ensure centering */
+    box-sizing: border-box;
+    padding: 20px;                   /* Optional: Adds some spacing inside the container */
+}
+
 
 .aqi-card {
     grid-area: aqi-card;
@@ -39,12 +51,13 @@
     padding: 0;
 }
 
-.safetyranges {
-    grid-area: safetyranges;
+.safety-ranges {
+    grid-area: safety-ranges;
 }
 
 .pollutants {
     grid-area: pollutants;
+    padding: 20px; 
 }
 
 /* Medium screen responsiveness */
@@ -53,7 +66,7 @@
         grid-template-areas: 
             "aqi-card mapbox-card"
             "health-rec-card-component pollutants"
-            "safetyranges pollutants";
+            "safety-ranges pollutants";
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto auto;
     }
@@ -66,7 +79,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -87,7 +100,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -107,7 +120,7 @@
         grid-template-areas: 
             "aqi-card mapbox-card"
             "health-rec-card-component pollutants"
-            "safetyranges pollutants";
+            "safety-ranges pollutants";
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto auto;
     }
@@ -120,7 +133,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -128,7 +141,7 @@
     }
 
     #map-container {
-        width: 100%;
+        width: 60%;
         height: 400px;  /* Set a reasonable height to ensure the map is visible */
         max-width: 100%;
     }
@@ -141,7 +154,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -185,3 +198,4 @@
     color: white; /* Explicitly set the text color to white */
     font-weight: bold; /* Make the text stand out more */
   }
+
