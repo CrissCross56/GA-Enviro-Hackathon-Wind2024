@@ -8,7 +8,7 @@ export default function Pollutants(props) {
        
         <div className={styles.pollutants}>
              <h1 className={styles.title}>Pollutants</h1>
-             <h3 className={styles.more}>Learn More</h3>
+             <h3 className={styles.more}><a href="https://openweathermap.org/api/air-pollution">Learn More</a></h3>
             <ProgressBar name={'Fine Particle Matter'} buffer={'.....'}  pollutant={`PM 2.5`} value={props.pm25} max={500}  units={`μg/m3`} good={12} moderate={35.4} unhealthySens={55.4} unhealthy={150.4} veryUnhealthy={250.4} hazardous={500}></ProgressBar>
             {/* make a horizontal grey line here */}
             <hr className={styles.separator}/>
