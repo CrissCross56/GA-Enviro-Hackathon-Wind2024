@@ -1,10 +1,9 @@
-
+import { useState } from 'react';
+import NavBar from "../../components/NavBar";
+import GeoLocationTest from "../../components/GeoLocationTest";
 import AQIComponent from '../../components/AQIComponent/AQIComponent';
 import OpenWeatherPage from '../OpenWeatherPage/OpenWeatherPage';
 import HealthRecComponent from "../../components/HealthRecComponent/HealthRecComponent";
-import Pollutants from "../../components/Pollutants/Pollutants";
-import LocationBar from "../../components/locationBar/LocationBar";
-
 import styles from "../../CSS/home.module.css";
 import "./HomePage.css";
 
@@ -25,7 +24,6 @@ export default function HomePage() {
     return (
         <div className={styles.homePg}>
             <NavBar />
-            <LocationBar/>
             <div className={`notification-banner ${alertCreated ? 'show' : ''}`}>
                 <p>Alert created successfully!</p>
             </div>
@@ -34,11 +32,8 @@ export default function HomePage() {
                 {/* Pass aqiData to HealthRecComponent */}
                 <OpenWeatherPage setAqiData={setAqiData} />
                 <HealthRecComponent aqiData={aqiData} />
-                <Pollutants pm25={20} pm10={40} n02={50}></Pollutants>
-
                 <GeoLocationTest />
             </div>
         </div>
     );
-
 }
