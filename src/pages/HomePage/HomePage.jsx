@@ -44,7 +44,7 @@ export default function HomePage() {
                         <SafetyRanges />
                     </div>
                     {/* <div className='pollutants'> */}
-                        <Pollutants pm25={aqiData.pm2_5} pm10={aqiData.pm10} n02={aqiData.no2}></Pollutants>
+                        <Pollutants  pm25={aqiData.pm2_5} pm10={aqiData.pm10} n02={aqiData.no2}></Pollutants>
                     {/* </div> */}
                     {/* <GeoLocationTest /> */}
                 </div>
