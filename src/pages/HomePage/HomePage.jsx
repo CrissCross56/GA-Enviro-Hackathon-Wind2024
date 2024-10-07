@@ -24,6 +24,8 @@ export default function HomePage() {
         }, 3000); // Show notification for 3 seconds
     };
 
+    
+
     return (
         <div className={styles.homePg}>
             <NavBar />
@@ -36,7 +38,7 @@ export default function HomePage() {
                 {/* Pass aqiData to HealthRecComponent */}
                 <OpenWeatherPage setAqiData={setAqiData} />
                 <HealthRecComponent aqiData={aqiData} />
-                <Pollutants className='Pollutants' pm25={aqiData.pm2_5} pm10={aqiData.pm10} n02={aqiData.no2}></Pollutants>
+                <Pollutants className='Pollutants' pm25={0} pm10={0} n02={0}></Pollutants>
                 <GeoLocationTest />
             </div>
         </div>
