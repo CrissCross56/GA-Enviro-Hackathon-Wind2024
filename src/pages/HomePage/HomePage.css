@@ -20,7 +20,7 @@
     min-height: 100vh;               /* Full height of the viewport */
     width: 100%;                     /* Full width to ensure centering */
     box-sizing: border-box;
-    padding: 20px;                   /* Optional: Adds some spacing inside the container */
+    /* padding: 20px;                   Optional: Adds some spacing inside the container */
 }
 
 
