@@ -15,7 +15,7 @@ export default function Map({ setCoordinates, resData }) {
     const mapContainerRef = useRef()
     const [center, setCenter] = useState(INITIAL_CENTER)
     const [zoom, setZoom] = useState(INITIAL_ZOOM)
-    const [showTemperatureLayer, setShowTemperatureLayer] = useState(false)
+    
 
     useEffect(() => {
         // mapboxgl.accessToken = "password"
@@ -35,10 +35,29 @@ export default function Map({ setCoordinates, resData }) {
         mapRef.current.addControl(attributionControl, 'top-right')
         mapRef.current.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
+
         mapRef.current.on('load', () => {
-            if (showTemperatureLayer) {
-                addTemperatureLayer();
-            }
+            mapRef.current.addSource('raster-tiles', {
+                type: 'raster',
+                tiles: [
+                    `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
+                ],
+                tileSize: 256,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, OpenWeather',
+            });
+
+            mapRef.current.addLayer({
+                id: 'simple-tiles',
+                type: 'raster',
+                source: 'raster-tiles',
+                minzoom: 0,
+                maxzoom: 22,
+                paint: {
+                    'raster-brightness-min': 0.2, //  makes colors more intense
+                    'raster-brightness-max': 0.8,
+                    'raster-contrast': 0.7, // increases contrast to make colors pop
+                }
+            });
         });
 
         //Can use "move" but that tracks all the movement on the map. "MoveEnd " tracks map movement on the end of where the map is set
@@ -61,66 +80,17 @@ export default function Map({ setCoordinates, resData }) {
             mapRef.current.remove()
         }
     }, [])
-    useEffect(() => {
-        if (mapRef.current && mapRef.current.isStyleLoaded()) {
-            if (showTemperatureLayer) {
-                addTemperatureLayer();
-            } else {
-                removeTemperatureLayer();
-            }
-        }
-    }, [showTemperatureLayer])
 
-    const addTemperatureLayer = () => {
-        if (!mapRef.current.getSource('raster-tiles')) {
-            mapRef.current.addSource('raster-tiles', {
-                type: 'raster',
-                tiles: [
-                    `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${import.meta.env.VITE_OPENWEATHER_API_KEY}`
-                ],
-                tileSize: 256,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, OpenWeather',
-            });
-
-            mapRef.current.addLayer({
-                id: 'simple-tiles',
-                type: 'raster',
-                source: 'raster-tiles',
-                minzoom: 0,
-                maxzoom: 22,
-                paint: {
-                    'raster-brightness-min': 0.2,
-                    'raster-brightness-max': 0.8,
-                    'raster-contrast': 0.7,
-                }
-            });
-        }
-    }
-
-    const removeTemperatureLayer = () => {
-        if (mapRef.current.getLayer('simple-tiles')) {
-            mapRef.current.removeLayer('simple-tiles')
-        }
-        if (mapRef.current.getSource('raster-tiles')) {
-            mapRef.current.removeSource('raster-tiles')
-        }
-    }
 
     return (
         <>
-            <div className="mapbox-card">
+        <div className="mapbox-card">
 
-                <div id='map-container' ref={mapContainerRef} >
-                <button
-                    className="toggle-temperature-layer"
-                    onClick={() => setShowTemperatureLayer(!showTemperatureLayer)}
-                >
-                    {showTemperatureLayer ? 'T' : 'T'}
-                </button>
-                </div>
+            <div id='map-container'ref={mapContainerRef} >
             </div>
+        </div>
             <div className="SafetyRanges">SafetyRanges</div>
-            <div className="Pollutants">Pollutants</div>
+<div className="Pollutants">Pollutants</div>
         </>
     )
 }
