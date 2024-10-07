@@ -43,10 +43,10 @@ export default function HomePage() {
                     <div className="safety-ranges">
                         <SafetyRanges />
                     </div>
-                    <div className='pollutants'>
+                    {/* <div className='pollutants'> */}
                         <Pollutants pm25={0} pm10={0} n02={0}></Pollutants>
-                    </div>
-                    <GeoLocationTest />
+                    {/* </div> */}
+                    {/* <GeoLocationTest /> */}
                 </div>
             </div>
         </div>
