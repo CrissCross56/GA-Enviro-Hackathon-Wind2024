@@ -3,7 +3,7 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement, CategoryScale } from "chart.js";
 import "../../pages/HomePage/HomePage";
 import "./AQIComponent.css";
-import AlertPopup from '../AlertPopup/AlertPopup';
+import AlertPopup from "../AlertPopup/AlertPopup";
 
 // Register the necessary chart elements
 Chart.register(ArcElement, CategoryScale);
@@ -18,15 +18,15 @@ const AQIComponent = ({ data, onAlertCreate }) => {
   // Map index to AQI value
   const mapIndexToAQI = (index) => {
     const aqiRanges = [
-      { min: 0, max: 50 },     // Index 1: Good
-      { min: 51, max: 100 },   // Index 2: Moderate
-      { min: 101, max: 150 },  // Index 3: Unhealthy for Sensitive Groups
-      { min: 151, max: 200 },  // Index 4: Unhealthy
-      { min: 201, max: 300 },  // Index 5: Very Unhealthy
-      { min: 301, max: 500 },  // Index 6: Hazardous
+      { min: 0, max: 50 }, // Index 1: Good
+      { min: 51, max: 100 }, // Index 2: Moderate
+      { min: 101, max: 150 }, // Index 3: Unhealthy for Sensitive Groups
+      { min: 151, max: 200 }, // Index 4: Unhealthy
+      { min: 201, max: 300 }, // Index 5: Very Unhealthy
+      { min: 301, max: 500 }, // Index 6: Hazardous
     ];
 
-    if (typeof index !== 'number' || index < 1 || index > 6) {
+    if (typeof index !== "number" || index < 1 || index > 6) {
       return null;
     }
 
@@ -34,7 +34,9 @@ const AQIComponent = ({ data, onAlertCreate }) => {
     const { min, max } = range;
     const midpoint = (min + max) / 2;
     const variation = (Math.random() - 0.5) * (max - min) * 0.2;
-    const aqiValue = Math.round(Math.max(min, Math.min(midpoint + variation, max)));
+    const aqiValue = Math.round(
+      Math.max(min, Math.min(midpoint + variation, max))
+    );
 
     return aqiValue;
   };
@@ -80,7 +82,7 @@ const AQIComponent = ({ data, onAlertCreate }) => {
 
   // Update aqiValue whenever aqiIndex changes
   useEffect(() => {
-    if (typeof aqiIndex === 'number' && aqiIndex >= 1 && aqiIndex <= 6) {
+    if (typeof aqiIndex === "number" && aqiIndex >= 1 && aqiIndex <= 6) {
       const newAqiValue = mapIndexToAQI(aqiIndex);
       setAqiValue(newAqiValue);
     } else {
@@ -89,7 +91,7 @@ const AQIComponent = ({ data, onAlertCreate }) => {
   }, [aqiIndex]); // Use 'aqiIndex' as dependency
 
   // Now validate aqiIndex and aqiValue after hooks
-  if (typeof aqiIndex !== 'number' || aqiIndex < 1 || aqiIndex > 6) {
+  if (typeof aqiIndex !== "number" || aqiIndex < 1 || aqiIndex > 6) {
     console.error("Invalid or missing aqiIndex", aqiIndex);
     return (
       <div className="aqi-error-message">
@@ -103,7 +105,9 @@ const AQIComponent = ({ data, onAlertCreate }) => {
   }
 
   if (aqiValue === null || aqiValue < 0 || aqiValue > 500) {
-    console.error("Invalid or missing AQI value. It must be between 0 and 500.");
+    console.error(
+      "Invalid or missing AQI value. It must be between 0 and 500."
+    );
     return (
       <div className="aqi-error-message">
         <h1>Error: AQI value out of range or not available</h1>
@@ -196,15 +200,21 @@ const AQIComponent = ({ data, onAlertCreate }) => {
             Create Alerts for AQI Changes
           </button>
           <br />
-          <button className="aqi-learn-button-updated">
+          <button
+            className="aqi-learn-button-updated"
+            onClick={() =>
+              window.open(
+                "https://openweathermap.org/api/air-pollution",
+                "_blank"
+              )
+            }
+          >
             Learn more about AQI
           </button>
         </div>
       </div>
 
-      {isPopupVisible && (
-        <AlertPopup onClose={handleClosePopup} />
-      )}
+      {isPopupVisible && <AlertPopup onClose={handleClosePopup} />}
     </div>
   );
 };
