@@ -5,13 +5,15 @@
   "type": "commonjs",
   "scripts": {
     "dev": "concurrently 'vite' 'nodemon server.js'",
-    "build": "vite build",
+    "vite-build": "vite build",
+    "build": "npm install && npm run vite-build",
     "preview": "vite preview"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "chart.js": "^4.4.4",
     "dotenv": "^16.0.3",
+    "ejs": "^3.1.10",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "mapbox-gl": "^3.7.0",

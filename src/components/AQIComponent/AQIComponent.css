@@ -118,7 +118,7 @@ p {
 .aqi-bottom-labels {
   display: flex;
   justify-content: space-between;
-  padding: 0 39px; /* This is good for the 0 */
+  padding: 0 21px; /* This is good for the 0 */
   margin-top: -15px; /* Keep the labels closer to the chart */
 }
 

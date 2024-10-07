@@ -1,54 +1,43 @@
-// server.js
-
-require("dotenv").config(); // Load environment variables at the very top
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const logger = require("morgan");
-const favicon = require("serve-favicon");
+// const cors = require("cors");
 
-require("./config/database"); // Connect to the database
+require("./config/database");
 
 const app = express();
+app.set('view engine', 'ejs');
 
-// Middleware setup
 app.use(logger("dev"));
 app.use(express.json());
 
-// Configure the authentication middleware
-// This decodes the JWT token and assigns the user information to req.user
+// Configure CORS
+// const corsOptions = {
+//   origin: ["http://localhost:3000", "http://localhost:8000", "https://macro-count.vercel.app"], // Allow both local development and deployed domain
+//   optionsSuccessStatus: 200,
+// };
+// app.use(cors(corsOptions));
+
+// Configure the auth middleware
 app.use(require("./config/auth"));
+const openWeatherRoutes = require('./routes/api/openweather');
+app.use('/api/openweather', openWeatherRoutes);
 
-// API routes must be defined before the "catch all" route
-app.use("/api/users", require("./routes/api/users"));
-app.use("/api/openweather", require("./routes/api/openweather"));
+// API routes must be before the "catch all" route
 
-// Determine the environment
-const isProduction = process.env.NODE_ENV === 'production';
+const manifest = require('./dist/manifest.json');
+app.use(express.static(path.join(__dirname, "dist")));
 
-if (isProduction) {
-  // In production, serve static files from 'dist'
-  app.use(express.static(path.join(__dirname, 'dist')));
+// "catch all" route
+app.get('/*', function(req, res) {
+  res.render(path.join(__dirname, 'dist', 'index.ejs'), {manifest});
+});
 
-  // "Catch All" route to serve 'dist/index.html'
-  app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-  });
-} else {
-  // In development, serve static files from 'public'
-  app.use(express.static(path.join(__dirname, 'public')));
 
-  // "Catch All" route to serve 'public/index.html'
-  app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
-}
+const port = process.env.PORT || 8000;
 
-// Unified port configuration
-const PORT = process.env.PORT || 8000;
-
-app.listen(PORT, () => {
-  console.log();
-  console.log(`  App running on port ${PORT}`);
-  console.log();
-  console.log(`  > Local: http://localhost:${PORT}/`);
+app.listen(port, () => {
+  console.log(`App running on port ${port}`);
+  console.log(`> Local: http://localhost:${port}/`);
 });
