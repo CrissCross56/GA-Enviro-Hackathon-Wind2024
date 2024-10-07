@@ -10,20 +10,30 @@ import "./HomePage.css";
 export default function HomePage() {
     // State to hold AQI data
     const [aqiData, setAqiData] = useState(null);
+    // State to handle alert notification
+    const [alertCreated, setAlertCreated] = useState(false);
+
+    // Function to show notification for a few seconds
+    const handleNotification = () => {
+        setAlertCreated(true);
+        setTimeout(() => {
+            setAlertCreated(false);
+        }, 3000); // Show notification for 3 seconds
+    };
 
     return (
-        
         <div className={styles.homePg}>
             <NavBar />
+            <div className={`notification-banner ${alertCreated ? 'show' : ''}`}>
+                <p>Alert created successfully!</p>
+            </div>
             <div className={"container-map"} >
-            <AQIComponent data={aqiData} />
-            {/* Pass aqiData to HealthRecComponent */}
-            <OpenWeatherPage setAqiData={setAqiData} />
-            {/* Pass aqiData to AQIComponent as 'data' */}
-            <HealthRecComponent aqiData={aqiData} />
-            {/* Pass setAqiData to OpenWeatherPage */}
-            <GeoLocationTest />
-        </div>
+                <AQIComponent data={aqiData} onAlertCreate={handleNotification} />
+                {/* Pass aqiData to HealthRecComponent */}
+                <OpenWeatherPage setAqiData={setAqiData} />
+                <HealthRecComponent aqiData={aqiData} />
+                <GeoLocationTest />
+            </div>
         </div>
     );
 }

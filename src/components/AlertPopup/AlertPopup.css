@@ -1,44 +1,218 @@
-/* AlertPopup.css */
+/* Alert Popup Overlay */
 .alert-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Alert Popup Container */
+.alert-popup {
+  background-color: #FDFDFD;
+  padding: 30px 40px;
+  border-radius: 16px;
+  width: 820px; /* Updated width to match Figma */
+  max-height: 90vh; /* Ensures the popup doesn't exceed viewport height */
+  overflow-y: auto; /* Adds vertical scroll if content overflows */
+  box-shadow: 0px 8px 25px rgba(53, 54, 66, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Ensure content is centered vertically */
+  position: relative; /* Needed for the close button positioning */
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #454ADE;
+}
+
+/* Header */
+.alert-popup h1 {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Description */
+.description {
+  color: #000;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Centered Form */
+.alert-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Alert Option Container */
+.alert-option {
+  display: flex; /* Keep using flexbox for flexibility */
+  justify-content: space-between; /* Space between items */
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  gap: 20px; /* Consistent spacing between elements */
+  text-align: left; /* Align text to the left */
+}
+
+/* Left Text */
+.left-text {
+  text-align: left; /* Align text to the left */
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #3C3D3B;
+  flex: 1; /* Ensure it takes the available space in the container */
+}
+
+/* Radio Button Styles */
+.radio-button {
+  width: 100px;
+  height: 36px;
+  border-radius: 30px;
+  border: 1px solid #454ADE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #1E1E1E;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 10px;
+}
+
+.radio-button.active {
+  background-color: #454ADE; /* Blue background when selected */
+  color: #fff;
+}
+
+.radio-button.disabled {
+  background-color: #ccc; /* Gray color for disabled state */
+  color: #888; /* Text color for disabled state */
+  cursor: not-allowed; /* Changes the cursor to indicate it's not clickable */
+  pointer-events: none; /* Prevents any click events */
+}
+
+/* Label Text */
+.label-text {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #3C3D3B;
+  text-align: left; /* Align text to the left */
+  flex: 1; /* Ensures it takes up available space */
+}
+
+/* Save Alert Button */
+.save-alert-btn {
+  width: 200px;
+  height: 50px;
+  background-color: #454ADE;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-top: 30px;
+  cursor: pointer;
+  align-self: center; /* Centers the button horizontally */
+  transition: background-color 0.3s;
+}
+
+.save-alert-btn:hover {
+  background-color: #3b42c6;
+}
+
+/* Success Message */
+.success-message {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 10px;
+  margin-top: 15px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #d6e9c6;
+  font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 850px) {
   .alert-popup {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    width: 400px;
+    width: 90%;
+    padding: 20px 20px;
   }
-  
-  .alert-popup h2 {
-    margin-top: 0;
+
+  .alert-option {
+    grid-template-columns: 150px 80px 80px 1fr; /* Adjust columns for smaller screens */
+    gap: 15px;
   }
-  
-  .alert-popup form {
-    display: flex;
-    flex-direction: column;
+
+  .radio-button {
+    width: 80px;
+    height: 32px;
+    font-size: 12px;
   }
-  
-  .alert-popup label {
-    margin-bottom: 10px;
+
+  .save-alert-btn {
+    width: 180px;
+    height: 45px;
+    font-size: 14px;
   }
-  
-  .alert-popup input,
-  .alert-popup select {
-    width: 100%;
-    padding: 5px;
-    margin-top: 5px;
+}
+
+@media (max-width: 500px) {
+  .alert-popup {
+    width: 95%;
+    padding: 15px 15px;
   }
-  
-  .alert-popup button {
-    margin-top: 10px;
+
+  .alert-option {
+    grid-template-columns: 120px 70px 70px 1fr; /* Further adjust for very small screens */
+    gap: 10px;
   }
+
+  .radio-button {
+    width: 70px;
+    height: 28px;
+    font-size: 10px;
+  }
+
+  .save-alert-btn {
+    width: 160px;
+    height: 40px;
+    font-size: 12px;
+  }
+}

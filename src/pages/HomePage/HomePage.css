@@ -155,3 +155,33 @@
         max-width: 100%;
     }
 }
+
+.notification-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #102937; /* Dark background color for contrast */
+    color: white; /* White text for better contrast */
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000; /* Ensure it's above other elements */
+  }
+  
+  .notification-banner.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .notification-banner p {
+    margin: 0;
+    color: white; /* Explicitly set the text color to white */
+    font-weight: bold; /* Make the text stand out more */
+  }
