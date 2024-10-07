@@ -2,8 +2,8 @@
     display: grid;
     grid-template-areas: 
         "aqi-card mapbox-card"
-        "health-rec-card-component pollutants"
-        "safetyranges pollutants";
+        "health-rec-card-component safetyranges"
+        "health-rec-card-component pollutants";
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto auto;
     gap: 30px;
@@ -57,6 +57,7 @@
 
 .pollutants {
     grid-area: pollutants;
+    padding: 20px; 
 }
 
 /* Medium screen responsiveness */
