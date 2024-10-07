@@ -1,23 +1,24 @@
-.safetyBox{
+.safetyBox {
     display: flex;
-    height: 143px;
-    width: 1015px;
+    height: auto;
+    width: 100%;
+    max-width: 1015px;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--Size-10, 10px);
-    align-self: stretch;
-    /* border: 1px solid red; */
     border-radius: var(--corner-radius-16, 16px);
     background: var(--Main---Elements, #FFF);
-
-/* Desktop Shadow */
-box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0.00), 0px 16px 71px 0px rgba(53, 54, 66, 0.01), 0px 80px 60px 0px rgba(53, 54, 66, 0.05), 0px 38px 45px 0px rgba(53, 54, 66, 0.09), 0px 8px 25px 0px rgba(53, 54, 66, 0.10);
+    box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0.00), 
+                0px 16px 71px 0px rgba(53, 54, 66, 0.01), 
+                0px 80px 60px 0px rgba(53, 54, 66, 0.05), 
+                0px 38px 45px 0px rgba(53, 54, 66, 0.09), 
+                0px 8px 25px 0px rgba(53, 54, 66, 0.10);
 }
-.safetyTitle{
+
+.safetyTitle {
     color: #000;
     padding-left: 19px;
     padding-top: 18px;
-    /* Title/H1/SemiBold */
     font-family: var(--Family-Title_Inter, Inter);
     font-size: var(--Size-24, 24px);
     font-style: normal;
@@ -25,27 +26,27 @@ box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0.00), 0px 16px 71px 0px rgba(53
     line-height: 120%; /* 28.8px */
 }
 
-.ranges{
+.ranges {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-left: 15px;
 }
 
-.rangeBox{
+.rangeBox,
+.dangerRangeBox {
     border-radius: 3px;
-    margin-right: 10px;
     width: 154px;
-    /* border: 1px solid red; */
     display: flex;
     padding: 20px 15px;
     justify-content: center;
     align-items: center;
-    gap: var(--Size-10, 10px);
     margin-bottom: 10px;
 }
 
-.rangeBox,p{
+.rangeBox, p {
     color: #000;
     font-family: Inter;
     font-size: 12px;
@@ -54,40 +55,27 @@ box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0.00), 0px 16px 71px 0px rgba(53
     line-height: normal;
 }
 
-.dangerRangeBox{
-    border-radius: 3px;
-    margin-right: 10px;
-    width: 154px;
-    /* border: 1px solid red; */
-    display: flex;
-    padding: 20px 15px;
-    justify-content: center;
-    align-items: center;
-    gap: var(--Size-10, 10px);
-    margin-top:0px;
-}
-
-#good{
+#good {
     background-color: #71C09B;
 }
 
-#mod{
+#mod {
     background-color: #ADEABA;
 }
 
-#unhealthySens{
+#unhealthySens {
     background-color: #EECF9A;
 }
 
-#unhealthy{
+#unhealthy {
     background-color: #F2AD95;
 }
 
-#veryUnhealthy{
+#veryUnhealthy {
     background-color: #EE7E90;
 }
 
-#dangerous{
+#dangerous {
     background-color: #BBA3DC;
     color: #000;
     font-family: Inter;
@@ -95,4 +83,23 @@ box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0.00), 0px 16px 71px 0px rgba(53
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .ranges {
+        flex-direction: column; /* Stack boxes vertically */
+        align-items: center;
+        width: 100%;
+        margin-left: 0; /* Remove left margin */
+        padding-bottom: 20px; /* Add padding below the last box */
+    }
+
+    .rangeBox,
+    .dangerRangeBox {
+        width: 100%; /* Make the boxes take up full width of the container */
+        max-width: 300px; /* Optional max width to prevent them from being too large */
+        margin-right: 0;
+        margin-left: 0;
+    }
 }

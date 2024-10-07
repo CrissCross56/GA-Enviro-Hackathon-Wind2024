@@ -25,8 +25,6 @@ export default function HomePage() {
         }, 3000); // Show notification for 3 seconds
     };
 
-
-
     return (
         <div className={styles.homePg}>
             <NavBar />
@@ -35,7 +33,7 @@ export default function HomePage() {
                 <p>Alert created successfully!</p>
             </div>
             <div className='outer-container'>
-                <div className={"container-map"} >
+                <div className="container-map">
                     <AQIComponent data={aqiData} onAlertCreate={handleNotification} />
                     {/* Pass aqiData to HealthRecComponent */}
                     <OpenWeatherPage setAqiData={setAqiData} />
@@ -43,10 +41,7 @@ export default function HomePage() {
                     <div className="safety-ranges">
                         <SafetyRanges />
                     </div>
-                    {/* <div className='pollutants'> */}
-                        <Pollutants pm25={0} pm10={0} n02={0}></Pollutants>
-                    {/* </div> */}
-                    {/* <GeoLocationTest /> */}
+                    <Pollutants pm25={0} pm10={0} n02={0} />
                 </div>
             </div>
         </div>
