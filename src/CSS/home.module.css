@@ -1,5 +1,4 @@
 .homePg{
-    border: 1px solid purple;
     min-height: 100vh; /* Minimum height should be the full viewport height */
     width: 100vw;      /* Full viewport width */
     background-color: white; /* You can adjust the background as needed */
