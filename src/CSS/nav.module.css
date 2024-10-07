@@ -33,6 +33,22 @@
     border-radius: 2px;
 }
 
+.title{
+    display: flex;
+    width: 326.802px;
+    height: 57.222px;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--Main---Text-Black, #1E1E1E);
+    font-family: Inter;
+    font-size: 40.691px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: -2.441px;
+
+}
+
 @media (max-width: 768px) {
     .links {
         position: absolute;
