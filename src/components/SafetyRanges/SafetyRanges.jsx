@@ -1,4 +1,4 @@
-import  "./safetyRange.module.css"
+// import  "./safetyRange.module.css"
 export default function SafetyRanges(){
     return(
         <div className="safetyBox">
