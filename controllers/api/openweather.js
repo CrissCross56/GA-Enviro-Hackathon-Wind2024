@@ -1,23 +1,42 @@
+// controllers/api/openweather.js
+const fetch = require('node-fetch'); // Make sure this is installed
+require('dotenv').config(); // To load environment variables
 
 module.exports = {
     search
-}
+};
 
 async function search(req, res) {
     try {
-        const API_key = process.env.OPENWEATHER_API_KEY
-        const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${req.body.lat}&lon=${req.body.lon}&appid=${API_key}`
+        const API_key = process.env.OPENWEATHER_API_KEY;
+        
+        // Log the API key and request body for debugging
+        console.log("API Key:", API_key);
+        console.log("Request Body:", req.body);
+
+        // Check if lat and lon are provided
+        if (!req.body.lat || !req.body.lon) {
+            console.error("Latitude or longitude is missing in the request body");
+            return res.status(400).json({ error: "Latitude and longitude are required" });
+        }
+
+        const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${req.body.lat}&lon=${req.body.lon}&appid=${API_key}`;
+        console.log("Request URL:", url);
+
         const OpenWeatherApiDataRequest = await fetch(url);
-        // console.log("fetch(url, API_key):", url, API_key);
+        
+        // Check if the API request was successful
         if (!OpenWeatherApiDataRequest.ok) {
             console.error(`Open Weather API error: ${OpenWeatherApiDataRequest.status} - ${OpenWeatherApiDataRequest.statusText}`);
-            throw new Error(`Failed to fetch OpenWeatherApiDataRequest data: ${OpenWeatherApiDataRequest.statusText}`);
+            throw new Error(`Failed to fetch data: ${OpenWeatherApiDataRequest.statusText}`);
         }
+
         const openWeatherDataResponse = await OpenWeatherApiDataRequest.json();
-        // console.log("openWeatherDataResponse:",openWeatherDataResponse)
-        res.status(200).json(openWeatherDataResponse)
+        console.log("OpenWeather API Response:", openWeatherDataResponse);
+
+        res.status(200).json(openWeatherDataResponse);
     } catch (error) {
-        console.log("ERROR:", error)
-        res.status(400).json(error);
+        console.error("Error in search function:", error);
+        res.status(400).json({ error: error.message });
     }
 }
