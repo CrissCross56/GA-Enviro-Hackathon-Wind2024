@@ -13,7 +13,7 @@ import "./HomePage.css";
 
 export default function HomePage() {
     // State to hold AQI data
-    const [aqiData, setAqiData] = useState(null);
+    const [aqiData, setAqiData] = useState(0);
     // State to handle alert notification
     const [alertCreated, setAlertCreated] = useState(false);
 
@@ -44,7 +44,7 @@ export default function HomePage() {
                         <SafetyRanges />
                     </div>
                     {/* <div className='pollutants'> */}
-                        <Pollutants pm25={0} pm10={0} n02={0}></Pollutants>
+                        <Pollutants pm25={aqiData.pm2_5} pm10={aqiData.pm10} n02={aqiData.no2}></Pollutants>
                     {/* </div> */}
                     {/* <GeoLocationTest /> */}
                 </div>

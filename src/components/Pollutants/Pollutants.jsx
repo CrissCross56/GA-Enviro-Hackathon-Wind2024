@@ -3,6 +3,58 @@ import styles from "../../CSS/progress.module.css";
 import React, { useState, useEffect } from "react";
 
 export default function Pollutants(props) {
+    //have a default values for the bars
+    const [pm25Val,setPm25Val] = useState(0)
+    const [pm10Val, setPm10Val] = useState(0)
+    const [n02Val, setNo2Val] = useState(0)
+   
+    // Use useEffect to update state when props change
+    useEffect(()=>{
+        //Check and update for PM 2.5 value
+        if (props.pm25 !== null && props.pm25 !== undefined) {
+            setPm25Val(props.pm25);
+        } else {
+            setPm25Val(0); // Default to 0 if value is null or undefined
+        }
+
+        // Check and update for PM 10 value
+        if (props.pm10 !== null && props.pm10 !== undefined) {
+            setPm10Val(props.pm10);
+        } else {
+            setPm10Val(0); // Default to 0 if value is null or undefined
+        }
+
+         // Check and update for NO2 value
+         if (props.n02 !== null && props.n02 !== undefined) {
+            setNo2Val(props.n02);
+        } else {
+            setNo2Val(0); // Default to 0 if value is null or undefined
+        }
+    }), [props.pm25, props.pm10, props.n02]
+    // useEffect(()=>{
+    //     if(props.pm25){
+    //         setpm25Val(props.pm25)
+    //     }
+    //     else{
+    //         setpm25Val(0)
+    //     }
+    
+    //     if(props.pm10){
+    //         setpm10Val(props.pm10)
+    //     }
+    //     else{
+    //         setpm10Val(0)
+    //     }
+    
+    //     if(props.n02){
+    //         setn02Val(props.n02)
+    //     }
+    //     else{
+    //         setn02Val(0)
+    //     }
+    
+    // })
+
   return (
     <div className={styles.pollutants}>
       <h1 className={styles.title}>Pollutants</h1>
@@ -19,7 +71,7 @@ export default function Pollutants(props) {
         name={"Fine Particle Matter"}
         buffer={"....."}
         pollutant={`PM 2.5`}
-        value={props.pm25}
+        value={pm25Val}
         max={500}
         units={`μg/m3`}
         good={12}
@@ -35,7 +87,7 @@ export default function Pollutants(props) {
         name={"Coarse Particle Matter"}
         buffer={""}
         pollutant={`PM 10`}
-        value={props.pm10}
+        value={pm10Val}
         max={604}
         units={`μg/m3`}
         good={54}
@@ -50,7 +102,7 @@ export default function Pollutants(props) {
         name={"Carbon Dioxide"}
         buffer={"............"}
         pollutant={`NO2`}
-        value={props.n02}
+        value={n02Val}
         max={1250}
         units={`ppb`}
         good={53}
