@@ -1,38 +1,78 @@
-#root {
+/* #root {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-}
+} */
 
 #map-container {
-    height: 500px;
-    width: 910px;
-    
+    height: 100%;
+    width: 100%;
+    border-radius: 16px !important;
     background-color: lightgrey;
+    position: relative; 
 }
 
-.sidebar {
-    background-color: rgb(35 55 75 / 90%);
-    color: #fff;
-    padding: 6px 12px;
-    font-family: monospace;
-    z-index: 1;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    margin: 12px;
-    border-radius: 4px;
+#map-container, .mapbox-card {
+    margin: 0;
+    padding: 0;
+}
+.mapbox-card {
+    border-radius: 16px !important;
+    box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0),
+    0px 16px 71px 0px rgba(53, 54, 66, 0.01),
+    0px 80px 60px 0px rgba(53, 54, 66, 0.05),
+    0px 38px 45px 0px rgba(53, 54, 66, 0.09),
+    0px 8px 25px 0px rgba(53, 54, 66, 0.1);
 }
 
-.reset-button {
-    position: absolute;
-    top: 32px;
-    z-index: 1;
-    left: 887px;
-    /* right: 50px; */
-    padding: 4px 10px;
-    border-radius: 10px;
-    cursor: pointer;
+.mapboxgl-ctrl-compass {
+    display: none !important;
+}
+
+.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-zoom-out {
+    /* background-color: #ffffff; */
+    border-radius: 0;
+    border: none;
+}
+
+.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-zoom-out {
+    outline: none !important;
+}
+
+
+.mapboxgl-ctrl-attrib-button {
+    border: none;
+    padding: 5px !important;
+    font-size: 1px !important; 
+    
+}
+
+.mapboxgl-ctrl-attrib-button:focus {
+    outline: none !important;   /* This fixed the shadow glow from info trademark*/
+    box-shadow: none;  
+             
+}
+
+.mapboxgl-ctrl-logo {
+    display: none !important;
+}
+
+.mapboxgl-ctrl-bottom-right .mapboxgl-ctrl, .mapboxgl-ctrl-right .mapboxgl-ctrl {
+
+    transform: scale(0.7);
+}
+
+/* .mapboxgl-ctrl-attrib-button {
+    background-color: hsla(0, 0%, 100%, .5);
+    background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E);
+ 
+} */
+
+.mapboxgl-ctrl-attrib-button {
+    background-color: transparent;
+    background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%270%200%2020%2020%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20fill-rule%3D%27evenodd%27%3E%3Cpath%20d%3D%27M4%2010a6%206%200%201%200%2012%200%206%206%200%201%200-12%200m5-3a1%201%200%201%200%202%200%201%201%200%201%200-2%200m0%203a1%201%200%201%201%202%200v3a1%201%200%201%201-2%200%27%20fill%3D%27%23454ADE%27/%3E%3C/svg%3E);
 }
