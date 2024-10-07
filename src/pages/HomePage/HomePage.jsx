@@ -38,7 +38,10 @@ export default function HomePage() {
                 {/* Pass aqiData to HealthRecComponent */}
                 <OpenWeatherPage setAqiData={setAqiData} />
                 <HealthRecComponent aqiData={aqiData} />
-                <Pollutants className='Pollutants' pm25={0} pm10={0} n02={0}></Pollutants>
+                <div  className='pollutants'>
+
+                <Pollutants pm25={0} pm10={0} n02={0}></Pollutants>
+                </div>
                 <GeoLocationTest />
             </div>
         </div>

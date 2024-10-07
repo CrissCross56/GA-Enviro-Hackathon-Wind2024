@@ -90,7 +90,7 @@ export default function Map({ setCoordinates, resData }) {
             </div>
         </div>
             <div className="SafetyRanges">SafetyRanges</div>
-<div className="Pollutants">Pollutants</div>
+{/* <div className="Pollutants">Pollutants</div> */}
         </>
     )
 }
