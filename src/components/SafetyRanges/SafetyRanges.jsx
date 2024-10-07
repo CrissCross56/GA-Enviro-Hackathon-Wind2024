@@ -4,19 +4,22 @@ import  "./safetyRange.css"
 export default function SafetyRanges(){
     return(
         <div className="safetyBox">
-            <h1>Safety Ranges</h1>
+            <h1 className="safetyTitle">Safety Ranges</h1>
 
-            <div><p>Good/Safe</p></div>
+            <div className='ranges'>
+                <p id="good" className="rangeBox">Good/Safe</p>
 
-            <div><p>Moderate/Acceptable</p></div>
+                <p id="mod" className="rangeBox">Moderate/Acceptable</p>
 
-            <div><p>Unhealthy for Sensitive</p></div>
+                <p id="unhealthySens" className="rangeBox">Unhealthy for Sensitive</p>
 
-            <div><p>Unhealthy</p></div>
+                <p id="unhealthy" className="rangeBox">Unhealthy</p>
 
-            <div><p>Very Unhealthy</p></div>
+                <p id="veryUnhealthy" className="rangeBox">Very Unhealthy</p>
 
-            <div><p>Dangerous</p></div>
+                <p id="dangerous" className="dangerRangeBox">Dangerous</p>
+            </div>
+          
         </div>
     )
 }
