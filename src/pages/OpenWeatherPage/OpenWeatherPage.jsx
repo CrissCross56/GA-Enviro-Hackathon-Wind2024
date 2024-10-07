@@ -21,7 +21,7 @@ export default function OpenWeatherPage({ setAqiData }) {
             lon: "-118.25"
         }
         try {
-            console.log("COORDIANTES",coordinates)
+            // console.log("COORDIANTES",coordinates)
             const openWeatherDataReq = await openWeatherApi.fetchOpenWeatherData(coordinates)
             try { 
                 if (!openWeatherDataReq.ok) throw new Error('Error fetching data'); }
@@ -43,7 +43,7 @@ export default function OpenWeatherPage({ setAqiData }) {
                 nh3: (openWeatherDataRes.list[0].components.nh3),
                 dt: (openWeatherDataRes.list[0].dt),
             }
-            console.log('data', data)
+            // console.log('data', data)
             setResData(data)
             setAqiData(data);
             // setError('')

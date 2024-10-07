@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import "./Map.css";
 import "../../pages/HomePage/HomePage";
+import "./Map.css";
 
 const INITIAL_CENTER = [
     -118.25,
@@ -15,12 +15,11 @@ export default function Map({ setCoordinates, resData }) {
     const mapContainerRef = useRef()
     const [center, setCenter] = useState(INITIAL_CENTER)
     const [zoom, setZoom] = useState(INITIAL_ZOOM)
-    
+
 
     useEffect(() => {
         // mapboxgl.accessToken = "password"
         mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-        console.log("mapboxgl.accessToken", mapboxgl.accessToken)
 
         mapRef.current = new mapboxgl.Map({
             container: mapContainerRef.current,
@@ -84,13 +83,13 @@ export default function Map({ setCoordinates, resData }) {
 
     return (
         <>
-        <div className="mapbox-card">
+            <div className="mapbox-card">
 
-            <div id='map-container'ref={mapContainerRef} >
+                <div id='map-container' ref={mapContainerRef} >
+                </div>
             </div>
-        </div>
             <div className="SafetyRanges">SafetyRanges</div>
-<div className="Pollutants">Pollutants</div>
+            <div className="Pollutants">Pollutants</div>
         </>
     )
 }

@@ -9,8 +9,20 @@
     gap: 30px;
     padding: 20px;
     max-width: 1200px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    
+    
 }
+.outer-container {
+    display: flex;                   /* Use flexbox */
+    justify-content: center;         /* Center horizontally */
+    align-items: center;             /* Center vertically */
+    min-height: 100vh;               /* Full height of the viewport */
+    width: 100%;                     /* Full width to ensure centering */
+    box-sizing: border-box;
+    padding: 20px;                   /* Optional: Adds some spacing inside the container */
+}
+
 
 .aqi-card {
     grid-area: aqi-card;
@@ -128,7 +140,7 @@
     }
 
     #map-container {
-        width: 100%;
+        width: 60%;
         height: 400px;  /* Set a reasonable height to ensure the map is visible */
         max-width: 100%;
     }
@@ -185,3 +197,4 @@
     color: white; /* Explicitly set the text color to white */
     font-weight: bold; /* Make the text stand out more */
   }
+
