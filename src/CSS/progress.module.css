@@ -1,0 +1,216 @@
+
+/* 
+.progressBar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  height: 20px; */
+  /* color: green; */
+  /* background-color: lightgray;
+  border-radius: 10px;
+  cursor: not-allowed;
+  transition: all 0.5s ease; Smooth transition
+} */
+/* 
+.progressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+}
+
+.progressBar::-moz-range-thumb {
+  width: 0;
+  height: 0;
+}
+
+.progressBar::-ms-thumb {
+  width: 0;
+  height: 0;
+} */
+.progressContainer {
+  width: 696px;
+  height: 10px;
+  flex-shrink: 0;
+  background-color: lightgray; /* Background color of the unfilled part */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensures child div doesn't overflow out of the parent */
+  position: relative;
+  margin-right: 10%;
+  margin-left: 20px;
+  margin-top: 1px;
+}
+
+.progressBar {
+  height: 100%; /* Full height of the parent div */
+  background-color: #4caf50; /* Green color representing the progress */
+  border-radius: 10px 0 0 10px; /* Round only the left corners */
+  transition: width 0.3s ease; /* Smooth transition of the width */
+}
+
+.pollutants{
+  width: 1013px;
+  height: 316px;
+  /* align-self: stretch; */
+  /* display: inline-block; */
+  border-radius: 16px;
+  background: var(--Main---Elements, #FFF);
+
+  /* Desktop Shadow */
+  box-shadow: 0px 180px 78px 0px rgba(53, 54, 66, 0.00), 0px 16px 71px 0px rgba(53, 54, 66, 0.01), 0px 80px 60px 0px rgba(53, 54, 66, 0.05), 0px 38px 45px 0px rgba(53, 54, 66, 0.09), 0px 8px 25px 0px rgba(53, 54, 66, 0.10);
+}
+
+.title{
+  width: 223px;
+  height: 33px;
+  margin-top: 10px;
+  margin-left: 19px;
+  flex-shrink: 0;
+  color: #000;
+  /* border: 1px solid red; */
+  /* Title/H1/SemiBold */
+  font-family: var(--Family-Title_Inter, Inter);
+  font-size: var(--Size-24, 24px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 28.8px */
+  
+}
+
+.more{
+  width: 149px;
+  height: 13.246px;
+  flex-shrink: 0;
+  margin-top: -15px;
+  margin-left: 21px;
+  color: var(--Main---Blue, #454ADE);
+  /* border: 1px solid black; */
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-12, 12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+  text-decoration-line: underline;
+
+}
+
+.name{
+  color: #000;
+  /* border: 1px solid orange; */
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size:  12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+  margin-bottom: 1px;
+}
+
+.pollutant{
+  color: #000;
+  /* border: 1px solid green; */
+  /* Body/Base/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.comp{
+  display: inline-flex;
+  /* border: 1px solid red; */
+}
+
+.concentrationLabel{
+  color: #000;
+  text-align: right;
+
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-12, 12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+  margin-bottom: 1px;
+}
+
+
+.concentration{
+  color: #000;
+  text-align: right;
+
+  /* Body/Base/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-16, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.concentrationUnits{
+  color: #000;
+
+  /* Body/Small/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-14, 14px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 16.8px */
+}
+
+.range{
+  /* border: 1px solid orange; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 25px;
+  padding-right: 15px;
+  margin-top: 10px;
+}
+.zero{
+  color: #000;
+
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-12, 12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+}
+.maxNumRange{
+  color: #000;
+  text-align: right;
+
+  /* Body/XS/Regular */
+  font-family: var(--Family-Body_Inter, Inter);
+  font-size: var(--Size-12, 12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+}
+
+.pollDiv{
+  margin-left: 20px;
+}
+
+.concentrationDiv{
+  margin-left: 40px;
+}
+
+.separator{
+  width: 972px;
+  height: 0.5px;
+  background: #888;
+  margin-bottom: 15px;
+}
+
+.buffer{
+  color: white;
+}
+
+.buffer::selection{
+  color: white;
+}

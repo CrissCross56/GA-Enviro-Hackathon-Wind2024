@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../pages/HomePage/HomePage";
 import './HealthRecComponent.css';
 
 const HealthRecComponent = ({ aqiData }) => {
@@ -51,6 +52,7 @@ const HealthRecComponent = ({ aqiData }) => {
   }
 
   return (
+    <div className="health-rec-card-component">
     <div className="health-rec-card">
       <h1 className="health-rec-title">Health Recommendations</h1>
       <div className={`health-rec-block ${recommendationClass}`}>
@@ -64,6 +66,7 @@ const HealthRecComponent = ({ aqiData }) => {
           </React.Fragment>
         ))}
       </div>
+    </div>
     </div>
   );
 };

@@ -1,0 +1,204 @@
+.container-map {
+    display: grid;
+    grid-template-areas: 
+        "aqi-card mapbox-card"
+        "health-rec-card-component safety-ranges"
+        "health-rec-card-component pollutants";
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto;
+    gap: 30px;
+    /* padding: 20px; */
+    max-width: 1200px;
+    /* margin: 0 auto; */
+    
+    
+}
+.outer-container {
+    display: flex;                   /* Use flexbox */
+    justify-content: center;         /* Center horizontally */
+    align-items: center;             /* Center vertically */
+    min-height: 85vh;               /* Full height of the viewport */
+    width: 90%;                     /* Full width to ensure centering */
+    /* color: red; */
+}
+
+
+.aqi-card {
+    grid-area: aqi-card;
+}
+
+.health-rec-card-component {
+    grid-area: health-rec-card-component;
+}
+
+.mapbox-card {
+    grid-area: mapbox-card;
+    width: 100%;
+    height: 100%;
+}
+
+#map-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px !important;
+    background-color: lightgrey;
+    position: relative;
+}
+
+#map-container, .mapbox-card {
+    margin: 0;
+    padding: 0;
+}
+
+.safety-ranges {
+    grid-area: safety-ranges;
+}
+
+.pollutants {
+    grid-area: pollutants;
+    padding: 20px; 
+}
+
+/* Medium screen responsiveness */
+@media (max-width: 1024px) {
+    .container-map {
+        grid-template-areas: 
+            "aqi-card mapbox-card"
+            "health-rec-card-component pollutants"
+            "safety-ranges pollutants";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+    }
+}
+
+/* Small screen responsiveness */
+@media (max-width: 768px) {
+    .container-map {
+        grid-template-areas:
+            "aqi-card"
+            "mapbox-card"
+            "health-rec-card-component"
+            "safety-ranges"
+            "pollutants";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    #map-container {
+        width: 100%;
+        height: 400px;  /* Set a reasonable height to ensure the map is visible */
+        max-width: 100%;
+    }
+}
+
+/* Extra small screen responsiveness */
+@media (max-width: 480px) {
+    .container-map {
+        grid-template-areas:
+            "aqi-card"
+            "mapbox-card"
+            "health-rec-card-component"
+            "safety-ranges"
+            "pollutants";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    #map-container {
+        width: 100%;
+        height: 300px; /* Adjusted height for very small screens */
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container-map {
+        grid-template-areas: 
+            "aqi-card mapbox-card"
+            "health-rec-card-component pollutants"
+            "safety-ranges pollutants";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+    }
+}
+
+/* Small screen responsiveness */
+@media (max-width: 768px) {
+    .container-map {
+        grid-template-areas:
+            "aqi-card"
+            "mapbox-card"
+            "health-rec-card-component"
+            "safety-ranges"
+            "pollutants";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    #map-container {
+        width: 60%;
+        height: 400px;  /* Set a reasonable height to ensure the map is visible */
+        max-width: 100%;
+    }
+}
+
+/* Extra small screen responsiveness */
+@media (max-width: 480px) {
+    .container-map {
+        grid-template-areas:
+            "aqi-card"
+            "mapbox-card"
+            "health-rec-card-component"
+            "safety-ranges"
+            "pollutants";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    #map-container {
+        width: 100%;
+        height: 300px; /* Adjusted height for very small screens */
+        max-width: 100%;
+    }
+}
+
+.notification-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #102937; /* Dark background color for contrast */
+    color: white; /* White text for better contrast */
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000; /* Ensure it's above other elements */
+  }
+  
+  .notification-banner.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .notification-banner p {
+    margin: 0;
+    color: white; /* Explicitly set the text color to white */
+    font-weight: bold; /* Make the text stand out more */
+  }
+
+
+.pollutants {
+    width: 200px;
+}
