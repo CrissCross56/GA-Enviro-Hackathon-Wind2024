@@ -1,4 +1,4 @@
-
+import "../../pages/HomePage/HomePage.css"
 import  "./safetyRange.css"
 
 export default function SafetyRanges(){

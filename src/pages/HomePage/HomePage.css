@@ -7,7 +7,7 @@
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto auto;
     gap: 30px;
-    padding: 20px;
+    /* padding: 20px; */
     max-width: 1200px;
     /* margin: 0 auto; */
     
@@ -17,10 +17,9 @@
     display: flex;                   /* Use flexbox */
     justify-content: center;         /* Center horizontally */
     align-items: center;             /* Center vertically */
-    min-height: 100vh;               /* Full height of the viewport */
-    width: 100%;                     /* Full width to ensure centering */
-    box-sizing: border-box;
-    /* padding: 20px;                   Optional: Adds some spacing inside the container */
+    min-height: 85vh;               /* Full height of the viewport */
+    width: 90%;                     /* Full width to ensure centering */
+    /* color: red; */
 }
 
 
@@ -199,3 +198,7 @@
     font-weight: bold; /* Make the text stand out more */
   }
 
+
+.pollutants {
+    width: 200px;
+}

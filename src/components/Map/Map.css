@@ -137,7 +137,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    min-height: 516px; /* Set minimum height for the map */
+    min-height: 537px; /* Set minimum height for the map */
 }
 
 @media (max-width: 768px) {
@@ -168,33 +168,80 @@
         font-size: 12px; 
     }
 }
+/* Medium screen responsiveness */
+@media (max-width: 768px) {
+    .mapbox-card {
+        height: 60vh; /* Take a percentage of the viewport height */
+        min-height: 300px; /* Reduce the minimum height for smaller devices */
+        width: 90vw; /* Take up most of the screen width */
+        max-width: 600px; /* Set a maximum width for consistency */
+        margin: 0 auto; /* Center the map horizontally */
+        padding: 10px;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for better appearance */
+    }
 
-/* For very small screens, like mobile devices */
+    #map-container {
+        height: 100%;
+        width: 100%;
+        position: relative; /* Ensures map properly fits within its parent */
+        border-radius: 12px !important;
+        min-height: 300px; /* Set a minimum height to keep the map usable */
+    }
+
+    .toggle-temperature-layer {
+        top: 20px; /* Adjust button positioning */
+        right: 10px;
+        width: 30px; /* Increase button size for better usability on touch screens */
+        height: 30px;
+        font-size: 14px; 
+    }
+}
+
+/* Small screen responsiveness for very small screens like mobile devices */
 @media (max-width: 480px) {
     .mapbox-card {
         height: 50vh; /* Reduce height for very small screens */
-        min-height: 250px;
-        width: 100vw; /* Take full width on very small screens */
+        min-height: 200px; /* Minimum height for small screens */
+        width: 95vw; /* Take up almost the entire width */
+        max-width: 100%; /* Ensure no unnecessary overflow */
         margin: 0 auto;
         padding: 5px;
         border-radius: 10px !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow for mobile devices */
     }
 
     #map-container {
         height: 100%;
         width: 100%;
         position: relative;
-        top: 0;
-        left: 0;
-        min-height: 250px; /* Smaller minimum height to fit the view better */
+        border-radius: 10px !important;
+        min-height: 200px; /* Smaller minimum height for mobile devices */
     }
 
     .toggle-temperature-layer {
-        top: 15px; /* Adjust button positioning */
-        right: 5px;
-        width: 28px; /* Increase size for better clickability */
+        top: 15px; /* Adjust position to keep button accessible */
+        right: 10px;
+        width: 28px; /* Ensure button size is adequate for touch interaction */
         height: 28px;
-        font-size: 14px; 
+        font-size: 12px; 
     }
 }
 
+/* General styles for the map to make sure it always fits within the container */
+.mapbox-card {
+    display: flex;
+    align-items: center; /* Vertically center the map within its container */
+    justify-content: center; /* Horizontally center the map */
+    box-sizing: border-box; /* Include padding and borders in the element’s width and height */
+    overflow: hidden; /* Prevent the map from exceeding its container */
+}
+
+#map-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px !important;
+    background-color: lightgrey;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent unwanted overflow */
+}

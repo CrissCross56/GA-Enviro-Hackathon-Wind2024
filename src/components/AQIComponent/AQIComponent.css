@@ -17,7 +17,7 @@
   font-size: 22px; /* Set a size for the title */
   font-weight: 700; /* Make the title bold */
   margin-bottom: 20px; /* Add some space below the title */
-  text-align: left; /* Align the title to the left */
+  text-align: center; /* Align the title to the left */
   margin-left: 10px; /* Offset the title slightly to the left */
 }
 
