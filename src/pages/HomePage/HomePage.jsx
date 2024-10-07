@@ -7,6 +7,7 @@ import HealthRecComponent from "../../components/HealthRecComponent/HealthRecCom
 import styles from "../../CSS/home.module.css";
 import Pollutants from "../../components/Pollutants/Pollutants";
 import LocationBar from "../../components/locationBar/LocationBar";
+import SafetyRanges from '../../components/SafetyRanges/SafetyRanges';
 
 import "./HomePage.css";
 
@@ -24,25 +25,29 @@ export default function HomePage() {
         }, 3000); // Show notification for 3 seconds
     };
 
-    
+
 
     return (
         <div className={styles.homePg}>
             <NavBar />
-            <LocationBar/>
+            <LocationBar />
             <div className={`notification-banner ${alertCreated ? 'show' : ''}`}>
                 <p>Alert created successfully!</p>
             </div>
-            <div className={"container-map"} >
-                <AQIComponent data={aqiData} onAlertCreate={handleNotification} />
-                {/* Pass aqiData to HealthRecComponent */}
-                <OpenWeatherPage setAqiData={setAqiData} />
-                <HealthRecComponent aqiData={aqiData} />
-                <div  className='pollutants'>
-
-                <Pollutants pm25={0} pm10={0} n02={0}></Pollutants>
+            <div className='outer-container'>
+                <div className={"container-map"} >
+                    <AQIComponent data={aqiData} onAlertCreate={handleNotification} />
+                    {/* Pass aqiData to HealthRecComponent */}
+                    <OpenWeatherPage setAqiData={setAqiData} />
+                    <HealthRecComponent aqiData={aqiData} />
+                    <div className="safety-ranges">
+                        <SafetyRanges />
+                    </div>
+                    <div className='pollutants'>
+                        <Pollutants pm25={0} pm10={0} n02={0}></Pollutants>
+                    </div>
+                    <GeoLocationTest />
                 </div>
-                <GeoLocationTest />
             </div>
         </div>
     );

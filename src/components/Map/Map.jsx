@@ -88,8 +88,8 @@ export default function Map({ setCoordinates, resData }) {
                 <div id='map-container' ref={mapContainerRef} >
                 </div>
             </div>
-            <div className="SafetyRanges">SafetyRanges</div>
-            <div className="Pollutants">Pollutants</div>
+
+
         </>
     )
 }

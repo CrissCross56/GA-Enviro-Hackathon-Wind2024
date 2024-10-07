@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas: 
         "aqi-card mapbox-card"
-        "health-rec-card-component safetyranges"
+        "health-rec-card-component safety-ranges"
         "health-rec-card-component pollutants";
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto auto;
@@ -51,8 +51,8 @@
     padding: 0;
 }
 
-.safetyranges {
-    grid-area: safetyranges;
+.safety-ranges {
+    grid-area: safety-ranges;
 }
 
 .pollutants {
@@ -66,7 +66,7 @@
         grid-template-areas: 
             "aqi-card mapbox-card"
             "health-rec-card-component pollutants"
-            "safetyranges pollutants";
+            "safety-ranges pollutants";
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto auto;
     }
@@ -79,7 +79,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -100,7 +100,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -120,7 +120,7 @@
         grid-template-areas: 
             "aqi-card mapbox-card"
             "health-rec-card-component pollutants"
-            "safetyranges pollutants";
+            "safety-ranges pollutants";
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto auto;
     }
@@ -133,7 +133,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -154,7 +154,7 @@
             "aqi-card"
             "mapbox-card"
             "health-rec-card-component"
-            "safetyranges"
+            "safety-ranges"
             "pollutants";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
