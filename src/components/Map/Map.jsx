@@ -15,6 +15,7 @@ export default function Map({ setCoordinates, resData }) {
     const mapContainerRef = useRef()
     const [center, setCenter] = useState(INITIAL_CENTER)
     const [zoom, setZoom] = useState(INITIAL_ZOOM)
+    
 
     useEffect(() => {
         // mapboxgl.accessToken = "password"
